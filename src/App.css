@@ -65,19 +65,25 @@ body {
   text-align: center;
   z-index: 100;
   cursor: pointer;
-  transition: all var(--transition-time) ease;
+  width: 100%;
+  transition: all var(--transition-time) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cv-container:not(.organized) .name-center {
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .name-center h1 {
   color: var(--primary-color);
-  font-size: calc(3.5rem / var(--content-scale));
+  font-size: min(3.5rem, 8vmin);
   margin: 0;
   text-shadow: var(--shadow);
 }
 
 .name-center h2 {
   color: var(--secondary-color);
-  font-size: calc(1.8rem / var(--content-scale));
+  font-size: min(1.8rem, 4vmin);
   margin: 0.5rem 0;
   font-weight: normal;
 }
@@ -91,23 +97,13 @@ body {
 .floating-card {
   position: absolute;
   background: white;
-  padding: calc(1.5rem / var(--content-scale));
+  padding: 1.5rem;
   border-radius: 8px;
   box-shadow: var(--shadow);
-  width: 280px;
+  width: min(280px, 80vmin);
   transition: transform var(--transition-time) cubic-bezier(0.4, 0, 0.2, 1);
   left: 50%;
   color: var(--text-color);
-}
-
-/* Organized state positions */
-.organized .name-center {
-  position: relative;
-  top: 0;
-  left: 0;
-  transform: none;
-  width: 100%;
-  margin-bottom: var(--organized-gap);
 }
 
 .organized .floating-card {
@@ -251,4 +247,12 @@ h5 {
   color: var(--text-color);
   margin: 0;
   font-size: var(--font-xs);
+}
+
+.organized .name-center {
+  position: relative;
+  top: 0;
+  left: 0;
+  transform: none;
+  margin-bottom: var(--organized-gap);
 }
