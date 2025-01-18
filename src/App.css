@@ -3,9 +3,20 @@
   --secondary-color: #5f6368;
   --text-color: #202124;
   --light-gray: #f8f9fa;
-  --spacing: 2rem;
   --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   --transition-time: 0.8s;
+  --paper-width: min(800px, 90vh / 1.4142);
+  --paper-height: calc(var(--paper-width) * 1.4142);
+  /* Organized mode spacing system */
+  --organized-margin: calc(var(--paper-width) * 0.04);
+  --organized-gap: calc(var(--paper-width) * 0.02);
+  --organized-padding: calc(var(--paper-width) * 0.02);
+  /* Font sizes relative to paper width */
+  --font-xl: calc(var(--paper-width) * 0.05);
+  --font-lg: calc(var(--paper-width) * 0.035);
+  --font-md: calc(var(--paper-width) * 0.028);
+  --font-sm: calc(var(--paper-width) * 0.024);
+  --font-xs: calc(var(--paper-width) * 0.022);
 }
 
 body {
@@ -13,12 +24,16 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 #root {
   width: 100vw;
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .cv-container {
@@ -26,6 +41,20 @@ body {
   height: 100%;
   position: relative;
   overflow: hidden;
+}
+
+.cv-container.organized {
+  width: var(--paper-width);
+  height: var(--paper-height);
+  background: white;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  padding: var(--organized-margin);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
 .name-center {
@@ -41,14 +70,14 @@ body {
 
 .name-center h1 {
   color: var(--primary-color);
-  font-size: 3.5rem;
+  font-size: calc(3.5rem / var(--content-scale));
   margin: 0;
   text-shadow: var(--shadow);
 }
 
 .name-center h2 {
   color: var(--secondary-color);
-  font-size: 1.8rem;
+  font-size: calc(1.8rem / var(--content-scale));
   margin: 0.5rem 0;
   font-weight: normal;
 }
@@ -62,7 +91,7 @@ body {
 .floating-card {
   position: absolute;
   background: white;
-  padding: 1.5rem;
+  padding: calc(1.5rem / var(--content-scale));
   border-radius: 8px;
   box-shadow: var(--shadow);
   width: 280px;
@@ -73,33 +102,104 @@ body {
 
 /* Organized state positions */
 .organized .name-center {
-  top: 2rem;
-  transform: translate(-50%, 0);
-  transition: all var(--transition-time) ease;
+  position: relative;
+  top: 0;
+  left: 0;
+  transform: none;
+  width: 100%;
+  margin-bottom: var(--organized-gap);
 }
 
 .organized .floating-card {
-  transition: transform var(--transition-time) cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  width: 100%;
+  left: 0;
+  transform: none !important;
+  padding: var(--organized-padding);
+  box-sizing: border-box;
 }
 
 .organized .contact-card {
-  transform: translate(-50%, 120px) rotate(0deg) !important;
+  flex: 0.5;
+  min-height: fit-content;
 }
 
 .organized .about-card {
-  transform: translate(-50%, 200px) rotate(0deg) !important;
+  flex: 1;
+  min-height: fit-content;
 }
 
 .organized .experience-card {
-  transform: translate(-50%, 350px) rotate(0deg) !important;
+  flex: 2;
+  min-height: fit-content;
 }
 
 .organized .education-card {
-  transform: translate(-50%, 550px) rotate(0deg) !important;
+  flex: 2;
+  min-height: fit-content;
 }
 
 .organized .skills-card {
-  transform: translate(-50%, 750px) rotate(0deg) !important;
+  flex: 1;
+  min-height: fit-content;
+}
+
+.organized h1 {
+  font-size: var(--font-xl);
+  margin: 0;
+}
+
+.organized h2 {
+  font-size: var(--font-lg);
+  margin: 0.25rem 0;
+}
+
+.organized h3 {
+  font-size: var(--font-md);
+  margin: 0 0 0.5rem 0;
+}
+
+.organized h4 {
+  font-size: var(--font-sm);
+  margin: 0;
+}
+
+.organized h5 {
+  font-size: var(--font-xs);
+  margin: 0.25rem 0;
+}
+
+.organized p {
+  font-size: var(--font-xs);
+  margin: 0.25rem 0;
+  line-height: 1.3;
+}
+
+.organized .skill-item {
+  font-size: var(--font-xs);
+  padding: calc(var(--paper-width) * 0.008) calc(var(--paper-width) * 0.016);
+  margin: calc(var(--paper-width) * 0.005);
+  border-radius: calc(var(--paper-width) * 0.01);
+}
+
+.organized .contact-info {
+  display: flex;
+  justify-content: center;
+  gap: calc(var(--paper-width) * 0.03);
+}
+
+.organized .skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--paper-width) * 0.008);
+  justify-content: center;
+}
+
+.organized .floating-elements {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--organized-gap);
 }
 
 /* Card specific styles */
@@ -150,4 +250,5 @@ h5 {
 .contact-info p {
   color: var(--text-color);
   margin: 0;
+  font-size: var(--font-xs);
 }
