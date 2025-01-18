@@ -68,6 +68,7 @@ body {
   width: 280px;
   transition: transform var(--transition-time) cubic-bezier(0.4, 0, 0.2, 1);
   left: 50%;
+  color: var(--text-color);
 }
 
 /* Organized state positions */
@@ -144,4 +145,9 @@ h5 {
   color: var(--secondary-color);
   font-style: italic;
   margin: 0.25rem 0;
+}
+
+.contact-info p {
+  color: var(--text-color);
+  margin: 0;
 }
