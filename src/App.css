@@ -65,50 +65,40 @@ body {
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: var(--shadow);
-  transition: all var(--transition-time) cubic-bezier(0.4, 0, 0.2, 1);
   width: 280px;
+  transition: transform var(--transition-time) cubic-bezier(0.4, 0, 0.2, 1);
+  left: 50%;
 }
 
 /* Organized state positions */
 .organized .name-center {
   top: 2rem;
   transform: translate(-50%, 0);
+  transition: all var(--transition-time) ease;
 }
 
 .organized .floating-card {
-  position: absolute;
-  transform: none !important;
-  transition: all var(--transition-time) cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform var(--transition-time) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .organized .contact-card {
-  top: 120px;
-  left: 50%;
-  transform: translateX(-50%) !important;
+  transform: translate(-50%, 120px) rotate(0deg) !important;
 }
 
 .organized .about-card {
-  top: 200px;
-  left: 50%;
-  transform: translateX(-50%) !important;
+  transform: translate(-50%, 200px) rotate(0deg) !important;
 }
 
 .organized .experience-card {
-  top: 350px;
-  left: 50%;
-  transform: translateX(-50%) !important;
+  transform: translate(-50%, 350px) rotate(0deg) !important;
 }
 
 .organized .education-card {
-  top: 550px;
-  left: 50%;
-  transform: translateX(-50%) !important;
+  transform: translate(-50%, 550px) rotate(0deg) !important;
 }
 
 .organized .skills-card {
-  top: 750px;
-  left: 50%;
-  transform: translateX(-50%) !important;
+  transform: translate(-50%, 750px) rotate(0deg) !important;
 }
 
 /* Card specific styles */

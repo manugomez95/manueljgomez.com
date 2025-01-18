@@ -1,13 +1,17 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './App.css'
 
 function App() {
   const [isOrganized, setIsOrganized] = useState(false);
+  const animationFrameRef = useRef();
+  const cardStatesRef = useRef([]);
+  const organizedPositionsRef = useRef([]);
+
   const [personalInfo] = useState({
-    name: "Your Name",
-    title: "Professional Title",
-    email: "email@example.com",
-    location: "City, Country",
+    name: "Manuel Gómez",
+    title: "XR Software Engineer",
+    email: "manugomez@protonmail.com",
+    location: "Madrid, Spain",
     about: "A brief description about yourself and your professional goals."
   });
 
@@ -36,14 +40,95 @@ function App() {
   ]);
 
   useEffect(() => {
-    if (!isOrganized) {
-      const elements = document.querySelectorAll('.floating-card');
-      elements.forEach(el => {
-        const randomX = Math.random() * (window.innerWidth - 300);
-        const randomY = Math.random() * (window.innerHeight - 200);
-        const randomRotate = Math.random() * 360;
-        el.style.transform = `translate(${randomX}px, ${randomY}px) rotate(${randomRotate}deg)`;
+    const elements = document.querySelectorAll('.floating-card');
+    
+    // Initialize card states if not done yet
+    if (!cardStatesRef.current.length) {
+      cardStatesRef.current = Array.from(elements).map(() => ({
+        x: (Math.random() * (window.innerWidth - 300)) - window.innerWidth/2,
+        y: Math.random() * (window.innerHeight - 200),
+        vx: (Math.random() - 0.5) * 1,
+        vy: (Math.random() - 0.5) * 1,
+        rotation: Math.random() * 360,
+        rotationSpeed: (Math.random() - 0.5) * 0.5,
+        lastX: 0,
+        lastY: 0,
+        lastRotation: 0
+      }));
+
+      // Apply initial positions
+      elements.forEach((el, index) => {
+        const state = cardStatesRef.current[index];
+        el.style.transform = `translate(${state.x}px, ${state.y}px) rotate(${state.rotation}deg)`;
       });
+    }
+
+    if (isOrganized) {
+      // Save current positions before organizing
+      elements.forEach((el, index) => {
+        const state = cardStatesRef.current[index];
+        state.lastX = state.x;
+        state.lastY = state.y;
+        state.lastRotation = state.rotation;
+      });
+
+      // Set initial transform for smooth transition
+      elements.forEach((el, index) => {
+        const state = cardStatesRef.current[index];
+        el.style.transform = `translate(${state.lastX}px, ${state.lastY}px) rotate(${state.lastRotation}deg)`;
+        el.offsetHeight; // Force reflow
+      });
+    } else {
+      if (cardStatesRef.current[0].lastX !== undefined) {
+        // Restore last unorganized positions with transition
+        elements.forEach((el, index) => {
+          const state = cardStatesRef.current[index];
+          state.x = state.lastX;
+          state.y = state.lastY;
+          state.rotation = state.lastRotation;
+          el.style.transform = `translate(${state.x}px, ${state.y}px) rotate(${state.rotation}deg)`;
+        });
+
+        // Wait for transition to complete before starting animation
+        setTimeout(() => {
+          // Start animation
+          let lastTime = performance.now();
+          
+          const animate = (currentTime) => {
+            const deltaTime = (currentTime - lastTime) / 16;
+            lastTime = currentTime;
+
+            elements.forEach((el, index) => {
+              const state = cardStatesRef.current[index];
+              
+              // Update position
+              state.x += state.vx * deltaTime;
+              state.y += state.vy * deltaTime;
+              state.rotation += state.rotationSpeed * deltaTime;
+
+              // Screen wrapping
+              if (state.x < -window.innerWidth/2 - 300) state.x = window.innerWidth/2;
+              if (state.x > window.innerWidth/2) state.x = -window.innerWidth/2 - 300;
+              if (state.y < -200) state.y = window.innerHeight;
+              if (state.y > window.innerHeight) state.y = -200;
+
+              el.style.transform = `translate(${state.x}px, ${state.y}px) rotate(${state.rotation}deg)`;
+            });
+
+            if (!isOrganized) {
+              animationFrameRef.current = requestAnimationFrame(animate);
+            }
+          };
+
+          animationFrameRef.current = requestAnimationFrame(animate);
+        }, parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--transition-time')) * 1000);
+
+        return () => {
+          if (animationFrameRef.current) {
+            cancelAnimationFrame(animationFrameRef.current);
+          }
+        };
+      }
     }
   }, [isOrganized]);
 
