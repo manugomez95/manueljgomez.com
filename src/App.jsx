@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 
 function App() {
+  const [isOrganized, setIsOrganized] = useState(false);
   const [personalInfo] = useState({
     name: "Your Name",
     title: "Professional Title",
@@ -34,54 +35,95 @@ function App() {
     "Skill 3"
   ]);
 
+  useEffect(() => {
+    if (!isOrganized) {
+      const elements = document.querySelectorAll('.floating-card');
+      elements.forEach(el => {
+        const randomX = Math.random() * (window.innerWidth - 300);
+        const randomY = Math.random() * (window.innerHeight - 200);
+        const randomRotate = Math.random() * 360;
+        el.style.transform = `translate(${randomX}px, ${randomY}px) rotate(${randomRotate}deg)`;
+      });
+    }
+  }, [isOrganized]);
+
+  const toggleOrganize = () => {
+    setIsOrganized(!isOrganized);
+  };
+
+  const renderCard = (content, index, className) => (
+    <div 
+      key={index}
+      className={`floating-card ${className}`}
+    >
+      {content}
+    </div>
+  );
+
   return (
-    <div className="cv-container">
-      <header className="cv-header">
+    <div className={`cv-container ${isOrganized ? 'organized' : ''}`}>
+      <div 
+        className="name-center"
+        onClick={toggleOrganize}
+      >
         <h1>{personalInfo.name}</h1>
         <h2>{personalInfo.title}</h2>
-        <div className="contact-info">
-          <p>{personalInfo.email}</p>
-          <p>{personalInfo.location}</p>
-        </div>
-      </header>
+      </div>
 
-      <section className="about-section">
-        <h3>About Me</h3>
-        <p>{personalInfo.about}</p>
-      </section>
+      <div className="floating-elements">
+        {renderCard(
+          <div className="contact-info">
+            <p>{personalInfo.email}</p>
+            <p>{personalInfo.location}</p>
+          </div>,
+          0,
+          'contact-card'
+        )}
 
-      <section className="experience-section">
-        <h3>Experience</h3>
-        {experience.map((job, index) => (
-          <div key={index} className="experience-item">
+        {renderCard(
+          <>
+            <h3>About Me</h3>
+            <p>{personalInfo.about}</p>
+          </>,
+          1,
+          'about-card'
+        )}
+
+        {experience.map((job, index) => renderCard(
+          <>
             <h4>{job.position}</h4>
             <h5>{job.company}</h5>
             <p className="period">{job.period}</p>
             <p>{job.description}</p>
-          </div>
+          </>,
+          index + 2,
+          'experience-card'
         ))}
-      </section>
 
-      <section className="education-section">
-        <h3>Education</h3>
-        {education.map((edu, index) => (
-          <div key={index} className="education-item">
+        {education.map((edu, index) => renderCard(
+          <>
             <h4>{edu.degree}</h4>
             <h5>{edu.institution}</h5>
             <p className="period">{edu.period}</p>
             <p>{edu.description}</p>
-          </div>
+          </>,
+          index + experience.length + 2,
+          'education-card'
         ))}
-      </section>
 
-      <section className="skills-section">
-        <h3>Skills</h3>
-        <div className="skills-list">
-          {skills.map((skill, index) => (
-            <span key={index} className="skill-item">{skill}</span>
-          ))}
-        </div>
-      </section>
+        {renderCard(
+          <>
+            <h3>Skills</h3>
+            <div className="skills-list">
+              {skills.map((skill, index) => (
+                <span key={index} className="skill-item">{skill}</span>
+              ))}
+            </div>
+          </>,
+          experience.length + education.length + 2,
+          'skills-card'
+        )}
+      </div>
     </div>
   )
 }

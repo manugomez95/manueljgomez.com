@@ -5,100 +5,146 @@
   --light-gray: #f8f9fa;
   --spacing: 2rem;
   --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --transition-time: 0.8s;
 }
 
 body {
   background-color: #f1f3f4;
   margin: 0;
-  padding: 2rem 1rem;
+  padding: 0;
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  overflow-x: hidden;
 }
 
 #root {
-  width: 100%;
-  display: flex;
-  justify-content: center;
+  width: 100vw;
+  height: 100vh;
 }
 
 .cv-container {
   width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: var(--spacing);
-  color: var(--text-color);
-  font-family: 'Arial', sans-serif;
-  line-height: 1.6;
-  background: white;
-  border-radius: 8px;
-  box-shadow: var(--shadow);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
-.cv-header {
+.name-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
-  margin-bottom: var(--spacing);
-  padding-bottom: var(--spacing);
-  border-bottom: 2px solid var(--light-gray);
+  z-index: 100;
+  cursor: pointer;
+  transition: all var(--transition-time) ease;
 }
 
-.cv-header h1 {
+.name-center h1 {
   color: var(--primary-color);
+  font-size: 3.5rem;
   margin: 0;
-  font-size: 2.5rem;
+  text-shadow: var(--shadow);
 }
 
-.cv-header h2 {
+.name-center h2 {
   color: var(--secondary-color);
+  font-size: 1.8rem;
   margin: 0.5rem 0;
-  font-size: 1.5rem;
   font-weight: normal;
 }
 
+.floating-elements {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.floating-card {
+  position: absolute;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  transition: all var(--transition-time) cubic-bezier(0.4, 0, 0.2, 1);
+  width: 280px;
+}
+
+/* Organized state positions */
+.organized .name-center {
+  top: 2rem;
+  transform: translate(-50%, 0);
+}
+
+.organized .floating-card {
+  position: absolute;
+  transform: none !important;
+  transition: all var(--transition-time) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.organized .contact-card {
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%) !important;
+}
+
+.organized .about-card {
+  top: 200px;
+  left: 50%;
+  transform: translateX(-50%) !important;
+}
+
+.organized .experience-card {
+  top: 350px;
+  left: 50%;
+  transform: translateX(-50%) !important;
+}
+
+.organized .education-card {
+  top: 550px;
+  left: 50%;
+  transform: translateX(-50%) !important;
+}
+
+.organized .skills-card {
+  top: 750px;
+  left: 50%;
+  transform: translateX(-50%) !important;
+}
+
+/* Card specific styles */
 .contact-info {
   display: flex;
   justify-content: center;
   gap: 2rem;
-  margin-top: 1rem;
 }
 
-.contact-info p {
-  margin: 0;
-  color: var(--secondary-color);
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
 }
 
-section {
-  margin-bottom: var(--spacing);
-  text-align: center;
-}
-
-section h3 {
+.skill-item {
+  background-color: var(--light-gray);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
   color: var(--primary-color);
-  border-bottom: 2px solid var(--light-gray);
-  padding-bottom: 0.5rem;
-  margin-bottom: 1.5rem;
+  border: 1px solid var(--primary-color);
 }
 
-.experience-item, .education-item {
-  margin-bottom: 2rem;
-  padding: 1rem;
-  background: var(--light-gray);
-  border-radius: 8px;
-  transition: transform 0.2s;
+h3 {
+  color: var(--primary-color);
+  margin-top: 0;
 }
 
-.experience-item:hover, .education-item:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow);
-}
-
-.experience-item h4, .education-item h4 {
+h4 {
   color: var(--primary-color);
   margin: 0;
 }
 
-.experience-item h5, .education-item h5 {
+h5 {
   color: var(--secondary-color);
   margin: 0.25rem 0;
   font-weight: normal;
@@ -108,27 +154,4 @@ section h3 {
   color: var(--secondary-color);
   font-style: italic;
   margin: 0.25rem 0;
-}
-
-.skills-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-  padding: 1rem;
-}
-
-.skill-item {
-  background-color: white;
-  padding: 0.5rem 1.5rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  color: var(--primary-color);
-  border: 1px solid var(--primary-color);
-  transition: all 0.2s;
-}
-
-.skill-item:hover {
-  background-color: var(--primary-color);
-  color: white;
 }
