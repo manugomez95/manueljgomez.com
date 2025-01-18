@@ -1,42 +1,134 @@
+:root {
+  --primary-color: #1a73e8;
+  --secondary-color: #5f6368;
+  --text-color: #202124;
+  --light-gray: #f8f9fa;
+  --spacing: 2rem;
+  --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  background-color: #f1f3f4;
+  margin: 0;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
 #root {
-  max-width: 1280px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.cv-container {
+  width: 100%;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: var(--spacing);
+  color: var(--text-color);
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background: white;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.cv-header {
+  text-align: center;
+  margin-bottom: var(--spacing);
+  padding-bottom: var(--spacing);
+  border-bottom: 2px solid var(--light-gray);
+}
+
+.cv-header h1 {
+  color: var(--primary-color);
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+.cv-header h2 {
+  color: var(--secondary-color);
+  margin: 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.contact-info p {
+  margin: 0;
+  color: var(--secondary-color);
+}
+
+section {
+  margin-bottom: var(--spacing);
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+section h3 {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--light-gray);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.experience-item, .education-item {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: var(--light-gray);
+  border-radius: 8px;
+  transition: transform 0.2s;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.experience-item:hover, .education-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
 }
 
-.card {
-  padding: 2em;
+.experience-item h4, .education-item h4 {
+  color: var(--primary-color);
+  margin: 0;
 }
 
-.read-the-docs {
-  color: #888;
+.experience-item h5, .education-item h5 {
+  color: var(--secondary-color);
+  margin: 0.25rem 0;
+  font-weight: normal;
+}
+
+.period {
+  color: var(--secondary-color);
+  font-style: italic;
+  margin: 0.25rem 0;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.skill-item {
+  background-color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  transition: all 0.2s;
+}
+
+.skill-item:hover {
+  background-color: var(--primary-color);
+  color: white;
 }
