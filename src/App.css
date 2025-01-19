@@ -109,6 +109,21 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 280px;
   min-height: 120px;
+  color: var(--text-color);
+}
+
+.floating-card h3,
+.floating-card h4 {
+  color: var(--primary-color);
+}
+
+.floating-card h5,
+.floating-card .period {
+  color: var(--secondary-color);
+}
+
+.floating-card p {
+  color: var(--text-color);
 }
 
 .organized .floating-card {
