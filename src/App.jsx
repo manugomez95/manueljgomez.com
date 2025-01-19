@@ -1,11 +1,10 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState } from 'react'
+import { motion, useAnimationControls } from 'framer-motion'
 import './App.css'
 
 function App() {
   const [isOrganized, setIsOrganized] = useState(false);
-  const animationFrameRef = useRef();
-  const cardStatesRef = useRef([]);
-  const organizedPositionsRef = useRef([]);
+  const controls = useAnimationControls();
 
   const [personalInfo] = useState({
     name: "Manuel Gómez",
@@ -39,111 +38,100 @@ function App() {
     "Skill 3"
   ]);
 
-  useEffect(() => {
-    const elements = document.querySelectorAll('.floating-card');
-    
-    // Helper function to get a random position within screen bounds
-    const getRandomPosition = () => {
-      return {
-        x: (Math.random() * window.innerWidth * 3) - window.innerWidth * 1.5,
-        y: (Math.random() * window.innerHeight * 3) - window.innerHeight * 1.5
-      };
-    };
-
-    // Helper function to get a constant direction
-    const getConstantDirection = () => {
-      const angle = Math.random() * Math.PI * 2;
-      const speed = 5;
-      return {
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed
-      };
-    };
-
-    // Initialize card states or transition to unorganized
-    if (!cardStatesRef.current.length || (!isOrganized && cardStatesRef.current[0].lastX !== undefined)) {
-      cardStatesRef.current = Array.from(elements).map(() => {
-        const pos = getRandomPosition();
-        const vel = getConstantDirection();
-        return {
-          x: pos.x,
-          y: pos.y,
-          vx: vel.vx,
-          vy: vel.vy
-        };
-      });
-
-      // Apply initial positions
-      elements.forEach((el, index) => {
-        const state = cardStatesRef.current[index];
-        el.style.transform = `translate(${state.x}px, ${state.y}px)`;
-      });
-
-      // Start animation if unorganized
-      if (!isOrganized) {
-        let lastTime = performance.now();
-        
-        const animate = (currentTime) => {
-          const deltaTime = (currentTime - lastTime) / 16;
-          lastTime = currentTime;
-
-          elements.forEach((el, index) => {
-            const state = cardStatesRef.current[index];
-            
-            // Update position
-            state.x += state.vx * deltaTime;
-            state.y += state.vy * deltaTime;
-            
-            // Wrap around screen
-            if (state.x < -window.innerWidth) {
-              state.x = window.innerWidth;
-            } else if (state.x > window.innerWidth) {
-              state.x = -window.innerWidth;
-            }
-            if (state.y < -window.innerHeight) {
-              state.y = window.innerHeight;
-            } else if (state.y > window.innerHeight) {
-              state.y = -window.innerHeight;
-            }
-
-            el.style.transform = `translate(${state.x}px, ${state.y}px)`;
-          });
-
-          if (!isOrganized) {
-            animationFrameRef.current = requestAnimationFrame(animate);
-          }
-        };
-
-        animationFrameRef.current = requestAnimationFrame(animate);
+  const floatingAnimation = {
+    animate: {
+      x: [0, 100, 0],
+      y: [0, 50, 0],
+      transition: {
+        x: {
+          repeat: Infinity,
+          duration: 3,
+          ease: "easeInOut"
+        },
+        y: {
+          repeat: Infinity,
+          duration: 4,
+          ease: "easeInOut"
+        }
       }
-    } else if (isOrganized) {
-      // Just save current positions for organized state
-      elements.forEach((el, index) => {
-        const state = cardStatesRef.current[index];
-        state.lastX = state.x;
-        state.lastY = state.y;
-      });
     }
-
-    return () => {
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
-      }
-    };
-  }, [isOrganized]);
+  };
 
   const toggleOrganize = () => {
     setIsOrganized(!isOrganized);
   };
 
-  const renderCard = (content, index, className) => (
-    <div 
-      key={index}
-      className={`floating-card ${className}`}
-    >
-      {content}
-    </div>
-  );
+  const renderCard = (content, index, className) => {
+    const boundaries = {
+      left: 0,
+      right: window.innerWidth - 300,
+      top: 0,
+      bottom: window.innerHeight - 150
+    };
+
+    // Generate random durations between 4 and 10 seconds
+    const xDuration = 4 + Math.random() * 6;
+    const yDuration = 4 + Math.random() * 6;
+    
+    // Random starting positions
+    const startX = Math.random() * boundaries.right;
+    const startY = Math.random() * boundaries.bottom;
+
+    // Calculate organized position based on index
+    const organizedY = index * 150; // Approximate spacing between cards
+
+    return (
+      <motion.div 
+        key={index}
+        className={`floating-card ${className}`}
+        initial={{ x: startX, y: startY }}
+        animate={isOrganized ? 
+          { 
+            x: 0,
+            y: organizedY,
+            rotate: [null, -10 + Math.random() * 20, 0],
+            scale: [1, 1.2, 1],
+            transition: { 
+              type: "spring",
+              stiffness: 150,
+              damping: 15,
+              mass: 1,
+              delay: index * 0.1,
+              rotate: {
+                duration: 0.5,
+                ease: "easeOut"
+              },
+              scale: {
+                duration: 0.5,
+                times: [0, 0.6, 1]
+              }
+            }
+          } : 
+          {
+            x: [null, boundaries.right, 0],
+            y: [null, boundaries.bottom, 0],
+            rotate: 0,
+            transition: {
+              x: {
+                duration: xDuration,
+                repeat: Infinity,
+                repeatType: "reverse",
+                ease: "linear"
+              },
+              y: {
+                duration: yDuration,
+                repeat: Infinity,
+                repeatType: "reverse",
+                ease: "linear"
+              }
+            }
+          }
+        }
+      >
+        {content}
+      </motion.div>
+    );
+  };
 
   return (
     <div className={`cv-container ${isOrganized ? 'organized' : ''}`}>
