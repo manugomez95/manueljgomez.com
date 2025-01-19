@@ -18,13 +18,25 @@ export const cvData = {
       position: "XR Software Engineer",
       period: "Feb 2022 - Nov 2022",
       description: "Key responsibilities and achievements"
+    },
+    {
+      company: "Amazon",
+      position: "Software Development Engineer",
+      period: "Sep 2020 - Aug 2021",
+      description: "Key responsibilities and achievements"
     }
   ],
   education: [
     {
-      institution: "University Name",
-      degree: "Degree",
-      period: "2016 - 2020",
+      institution: "U-Tad",
+      degree: "Master's, Computer Graphics, VR and Simulation",
+      period: "Oct 2021 - Sep 2022",
+      description: "Relevant coursework and achievements"
+    },
+    {
+      institution: "Universidad Autónoma de Madrid",
+      degree: "B.S., Computer Engineering",
+      period: "2014 - 2018",
       description: "Relevant coursework and achievements"
     }
   ],
@@ -32,6 +44,11 @@ export const cvData = {
     "Skill 1",
     "Skill 2",
     "Skill 3"
+  ],
+  languages: [
+    "Spanish (Native)",
+    "English (Fluent)",
+    "French (Basic)"
   ],
   projects: [
     {

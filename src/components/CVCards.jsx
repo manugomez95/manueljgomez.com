@@ -20,8 +20,7 @@ export const AboutCard = ({ initial, animate, about }) => (
 
 export const ExperienceCard = ({ initial, animate, position, company, period, description, projects }) => (
   <FloatingCard className="experience-card" initial={initial} animate={animate}>
-    <h4>{position}</h4>
-    <h5>{company}</h5>
+    <h4>{position} <span className="separator">|</span> <h5>{company}</h5></h4>
     <p className="period">{period}</p>
     <p>{description}</p>
     {projects && projects.length > 0 && (
@@ -39,8 +38,7 @@ export const ExperienceCard = ({ initial, animate, position, company, period, de
 
 export const EducationCard = ({ initial, animate, degree, institution, period, description, projects }) => (
   <FloatingCard className="education-card" initial={initial} animate={animate}>
-    <h4>{degree}</h4>
-    <h5>{institution}</h5>
+    <h4>{degree} <span className="separator">|</span> <h5>{institution}</h5></h4>
     <p className="period">{period}</p>
     <p>{description}</p>
     {projects && projects.length > 0 && (
@@ -62,6 +60,17 @@ export const SkillsCard = ({ initial, animate, skills }) => (
     <div className="skills-list">
       {skills.map((skill, index) => (
         <span key={index} className="skill-item">{skill}</span>
+      ))}
+    </div>
+  </FloatingCard>
+);
+
+export const LanguagesCard = ({ initial, animate, languages }) => (
+  <FloatingCard className="languages-card" initial={initial} animate={animate}>
+    <h3>Languages</h3>
+    <div className="languages-list">
+      {languages.map((language, index) => (
+        <span key={index} className="language-item">{language}</span>
       ))}
     </div>
   </FloatingCard>
@@ -128,6 +137,11 @@ EducationCard.propTypes = {
 SkillsCard.propTypes = {
   ...cardBasePropTypes,
   skills: PropTypes.arrayOf(PropTypes.string).isRequired
+};
+
+LanguagesCard.propTypes = {
+  ...cardBasePropTypes,
+  languages: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 ProjectCard.propTypes = {

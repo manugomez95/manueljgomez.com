@@ -54,6 +54,10 @@
   border-bottom: 2px solid var(--light-gray);
 }
 
+.organized .section-title.education {
+  margin-top: var(--organized-gap);
+}
+
 .organized .experience-card {
   margin: 0;
   border-radius: 0;
@@ -69,6 +73,26 @@
 }
 
 .organized .experience-card:first-of-type {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+/* Education section */
+.organized .education-card {
+  margin: 0;
+  border-radius: 0;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.organized .education-card:last-child {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.organized .education-card:first-of-type {
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
 }
@@ -114,9 +138,18 @@
   border-radius: calc(var(--paper-width) * 0.01);
 }
 
-/* Education section */
-.organized .education-card {
-  margin-top: var(--organized-gap);
+/* Languages section */
+.organized .languages-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--paper-width) * 0.008);
+}
+
+.organized .language-item {
+  font-size: var(--font-xs);
+  padding: calc(var(--paper-width) * 0.008) calc(var(--paper-width) * 0.016);
+  margin: calc(var(--paper-width) * 0.005);
+  border-radius: calc(var(--paper-width) * 0.01);
 }
 
 /* Typography */
@@ -138,11 +171,27 @@
 .organized h4 {
   font-size: var(--font-sm);
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .organized h5 {
   font-size: var(--font-xs);
-  margin: 0.25rem 0;
+  margin: 0;
+  font-weight: normal;
+}
+
+/* Move separator styles under organized */
+.organized .floating-card .separator {
+  color: rgba(0, 0, 0, 0.3);
+  font-weight: normal;
+  display: inline;
+}
+
+/* Hide separator in floating mode */
+.floating-card .separator {
+  display: none;
 }
 
 .organized p {
