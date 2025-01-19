@@ -18,6 +18,6 @@
   --font-sm: calc(var(--paper-width) * 0.024);
   --font-xs: calc(var(--paper-width) * 0.022);
   /* Grid layout */
-  --left-column-width: 35%;
-  --right-column-width: 65%;
+  --left-column-width: 40%;
+  --right-column-width: 60%;
 } 

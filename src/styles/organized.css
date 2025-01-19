@@ -6,7 +6,7 @@
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
   border-radius: 8px;
   position: relative;
-  overflow: hidden;
+  overflow: auto;
   padding: var(--organized-margin);
   box-sizing: border-box;
   display: flex;
@@ -58,40 +58,25 @@
   margin-top: var(--organized-gap);
 }
 
-.organized .experience-card {
-  margin: 0;
-  border-radius: 0;
-  border-left: 1px solid rgba(0, 0, 0, 0.1);
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.organized .experience-card:last-child {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
-}
-
-.organized .experience-card:first-of-type {
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-}
-
-/* Education section */
+/* Experience and Education cards */
+.organized .experience-card,
 .organized .education-card {
   margin: 0;
   border-radius: 0;
   border-left: 1px solid rgba(0, 0, 0, 0.1);
   border-right: 1px solid rgba(0, 0, 0, 0.1);
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: var(--organized-gap);
 }
 
+.organized .experience-card:last-child,
 .organized .education-card:last-child {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
 }
 
+.organized .experience-card:first-of-type,
 .organized .education-card:first-of-type {
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
@@ -205,6 +190,7 @@
   margin-top: var(--organized-gap);
   padding-top: var(--organized-gap);
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: calc(-1 * var(--organized-gap)); /* Compensate for card padding */
 }
 
 .organized .project-reference {
