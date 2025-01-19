@@ -73,12 +73,13 @@ function App() {
     const xDuration = 4 + Math.random() * 6;
     const yDuration = 4 + Math.random() * 6;
     
-    // Random starting positions
-    const startX = Math.random() * boundaries.right;
-    const startY = Math.random() * boundaries.bottom;
-
-    // Calculate organized position based on index
-    const organizedY = index * 150; // Approximate spacing between cards
+    // Center-based starting positions for unorganized state
+    const centerX = window.innerWidth / 2 - 150; // half of card width
+    const centerY = window.innerHeight / 2 - 75; // half of card height
+    const radius = Math.min(window.innerWidth, window.innerHeight) / 4; // radius for circular distribution
+    const angle = (index / 5) * 2 * Math.PI; // distribute cards in a circle (5 is approx number of cards)
+    const startX = centerX + radius * Math.cos(angle);
+    const startY = centerY + radius * Math.sin(angle);
 
     return (
       <motion.div 
@@ -88,7 +89,7 @@ function App() {
         animate={isOrganized ? 
           { 
             x: 0,
-            y: organizedY,
+            y: index * 150,
             rotate: [null, -10 + Math.random() * 20, 0],
             scale: [1, 1.2, 1],
             transition: { 
@@ -108,8 +109,8 @@ function App() {
             }
           } : 
           {
-            x: [null, boundaries.right, 0],
-            y: [null, boundaries.bottom, 0],
+            x: [startX, boundaries.right, 0],
+            y: [startY, boundaries.bottom, 0],
             rotate: 0,
             transition: {
               x: {
