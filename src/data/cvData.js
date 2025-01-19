@@ -8,9 +8,15 @@ export const cvData = {
   },
   experience: [
     {
-      company: "Company Name",
-      position: "Position",
-      period: "2020 - Present",
+      company: "Acciona",
+      position: "XR Software Engineer",
+      period: "Nov 2022 - Present",
+      description: "Key responsibilities and achievements"
+    },
+    {
+      company: "Optiva Media",
+      position: "XR Software Engineer",
+      period: "Feb 2022 - Nov 2022",
       description: "Key responsibilities and achievements"
     }
   ],

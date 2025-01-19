@@ -17,6 +17,9 @@
   --font-md: calc(var(--paper-width) * 0.028);
   --font-sm: calc(var(--paper-width) * 0.024);
   --font-xs: calc(var(--paper-width) * 0.022);
+  /* Grid layout */
+  --left-column-width: 35%;
+  --right-column-width: 65%;
 }
 
 body {
@@ -126,6 +129,21 @@ body {
   color: var(--text-color);
 }
 
+.organized .floating-elements {
+  display: grid;
+  grid-template-columns: var(--left-column-width) var(--right-column-width);
+  gap: var(--organized-gap);
+  height: auto;
+  align-items: start;
+}
+
+.organized .left-column,
+.organized .right-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--organized-gap);
+}
+
 .organized .floating-card {
   position: relative;
   width: 100%;
@@ -133,33 +151,25 @@ body {
   transform: none !important;
   padding: var(--organized-padding);
   box-sizing: border-box;
-  transition: width var(--transition-time) cubic-bezier(0.4, 0, 0.2, 1),
-              padding var(--transition-time) cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
 }
 
-.organized .contact-card {
-  flex: 0.5;
-  min-height: fit-content;
-}
-
-.organized .about-card {
-  flex: 1;
-  min-height: fit-content;
-}
-
-.organized .experience-card {
-  flex: 2;
-  min-height: fit-content;
-}
-
-.organized .education-card {
-  flex: 2;
-  min-height: fit-content;
-}
-
+/* Remove grid-column assignments since we're using explicit columns */
+.organized .contact-card,
+.organized .about-card,
 .organized .skills-card {
-  flex: 1;
-  min-height: fit-content;
+  margin-bottom: 0;
+}
+
+.organized .experience-card,
+.organized .education-card {
+  margin-bottom: var(--organized-gap);
+}
+
+.organized .experience-card:last-child,
+.organized .education-card:last-child {
+  margin-bottom: 0;
 }
 
 .organized h1 {
@@ -202,22 +212,36 @@ body {
 
 .organized .contact-info {
   display: flex;
-  justify-content: center;
-  gap: calc(var(--paper-width) * 0.03);
+  flex-direction: column;
+  gap: calc(var(--paper-width) * 0.01);
+  align-items: flex-start;
+}
+
+.organized .contact-info p {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-color);
+  margin: 0;
+  font-size: var(--font-xs);
+}
+
+.organized .contact-card {
+  padding: calc(var(--organized-padding) * 1.2);
+  background-color: var(--light-gray);
+  border-radius: 6px;
+  margin-bottom: var(--organized-gap);
+}
+
+.organized .contact-card h3 {
+  margin-bottom: calc(var(--organized-gap) * 0.5);
+  font-size: var(--font-sm);
 }
 
 .organized .skills-list {
   display: flex;
   flex-wrap: wrap;
   gap: calc(var(--paper-width) * 0.008);
-  justify-content: center;
-}
-
-.organized .floating-elements {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: var(--organized-gap);
 }
 
 /* Card specific styles */
@@ -231,7 +255,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .skill-item {
@@ -277,6 +301,7 @@ h5 {
   left: 0;
   transform: none;
   margin-bottom: var(--organized-gap);
+  grid-column: 1 / -1;
 }
 
 .project-card {
@@ -353,4 +378,41 @@ h5 {
 
 .organized .project-reference {
   font-size: var(--font-xs);
+}
+
+.organized .right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.organized .section-title {
+  color: var(--primary-color);
+  font-size: var(--font-md);
+  margin: 0 0 calc(var(--organized-gap) * 0.5) 0;
+  padding-bottom: calc(var(--organized-gap) * 0.5);
+  border-bottom: 2px solid var(--light-gray);
+}
+
+.organized .experience-card {
+  margin: 0;
+  border-radius: 0;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.organized .experience-card:last-child {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.organized .experience-card:first-of-type {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.organized .education-card {
+  margin-top: var(--organized-gap);
 }

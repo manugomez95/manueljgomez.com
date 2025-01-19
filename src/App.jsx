@@ -37,46 +37,57 @@ function App() {
       </div>
 
       <div className="floating-elements">
-        <ContactCard
-          initial={{ x: contactStartPos.x, y: contactStartPos.y }}
-          animate={getContactAnimation()}
-          email={cvData.personalInfo.email}
-          location={cvData.personalInfo.location}
-        />
+        <div className="left-column">
+          <AboutCard
+            initial={{ x: aboutStartPos.x, y: aboutStartPos.y }}
+            animate={getAboutAnimation()}
+            about={cvData.personalInfo.about}
+          />
 
-        <AboutCard
-          initial={{ x: aboutStartPos.x, y: aboutStartPos.y }}
-          animate={getAboutAnimation()}
-          about={cvData.personalInfo.about}
-        />
+          <ContactCard
+            initial={{ x: contactStartPos.x, y: contactStartPos.y }}
+            animate={getContactAnimation()}
+            email={cvData.personalInfo.email}
+            location={cvData.personalInfo.location}
+          />
 
-        {cvData.experience.map((job, index) => {
-          const { startPos, getAnimation } = useCardAnimation(index + 2, totalCards);
-          const relatedProjects = cvData.projects.filter(project => project.relatedExperience === job.company);
-          return (
-            <ExperienceCard
-              key={index}
-              initial={{ x: startPos.x, y: startPos.y }}
-              animate={getAnimation()}
-              {...job}
-              projects={relatedProjects}
-            />
-          );
-        })}
+          <SkillsCard
+            initial={{ x: skillsStartPos.x, y: skillsStartPos.y }}
+            animate={getSkillsAnimation()}
+            skills={cvData.skills}
+          />
+        </div>
 
-        {cvData.education.map((edu, index) => {
-          const { startPos, getAnimation } = useCardAnimation(index + 2 + cvData.experience.length, totalCards);
-          const relatedProjects = cvData.projects.filter(project => project.relatedEducation === edu.institution);
-          return (
-            <EducationCard
-              key={index}
-              initial={{ x: startPos.x, y: startPos.y }}
-              animate={getAnimation()}
-              {...edu}
-              projects={relatedProjects}
-            />
-          );
-        })}
+        <div className="right-column">
+          {isOrganized && <h3 className="section-title">Experience</h3>}
+          {cvData.experience.map((job, index) => {
+            const { startPos, getAnimation } = useCardAnimation(index + 2, totalCards);
+            const relatedProjects = cvData.projects.filter(project => project.relatedExperience === job.company);
+            return (
+              <ExperienceCard
+                key={index}
+                initial={{ x: startPos.x, y: startPos.y }}
+                animate={getAnimation()}
+                {...job}
+                projects={relatedProjects}
+              />
+            );
+          })}
+
+          {cvData.education.map((edu, index) => {
+            const { startPos, getAnimation } = useCardAnimation(index + 2 + cvData.experience.length, totalCards);
+            const relatedProjects = cvData.projects.filter(project => project.relatedEducation === edu.institution);
+            return (
+              <EducationCard
+                key={index}
+                initial={{ x: startPos.x, y: startPos.y }}
+                animate={getAnimation()}
+                {...edu}
+                projects={relatedProjects}
+              />
+            );
+          })}
+        </div>
 
         {!isOrganized && cvData.projects.map((project, index) => {
           const { startPos, getAnimation } = projectAnimations[index];
@@ -89,12 +100,6 @@ function App() {
             />
           );
         })}
-
-        <SkillsCard
-          initial={{ x: skillsStartPos.x, y: skillsStartPos.y }}
-          animate={getSkillsAnimation()}
-          skills={cvData.skills}
-        />
       </div>
     </div>
   );

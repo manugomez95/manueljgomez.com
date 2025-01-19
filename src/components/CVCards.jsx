@@ -3,9 +3,10 @@ import { FloatingCard } from './FloatingCard';
 
 export const ContactCard = ({ initial, animate, email, location }) => (
   <FloatingCard className="contact-card" initial={initial} animate={animate}>
+    <h3>Contact</h3>
     <div className="contact-info">
-      <p>{email}</p>
-      <p>{location}</p>
+      <p>📧 {email}</p>
+      <p>📍 {location}</p>
     </div>
   </FloatingCard>
 );
