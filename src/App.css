@@ -70,7 +70,8 @@ body {
   z-index: 100;
   cursor: pointer;
   width: 100%;
-  transition: all var(--transition-time) cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all var(--transition-time) cubic-bezier(0.4, 0, 0.2, 1),
+              font-size var(--transition-time) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .cv-container:not(.organized) .name-center {
@@ -83,6 +84,7 @@ body {
   font-size: min(3.5rem, 8vmin);
   margin: 0;
   text-shadow: var(--shadow);
+  transition: font-size var(--transition-time) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .name-center h2 {
@@ -90,6 +92,7 @@ body {
   font-size: min(1.8rem, 4vmin);
   margin: 0.5rem 0;
   font-weight: normal;
+  transition: font-size var(--transition-time) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .floating-elements {
