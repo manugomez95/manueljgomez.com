@@ -82,18 +82,7 @@
   border-top-right-radius: 6px;
 }
 
-/* Contact card */
-.organized .contact-card {
-  padding: calc(var(--organized-padding) * 1.2);
-  background-color: var(--light-gray);
-  border-radius: 6px;
-}
-
-.organized .contact-card h3 {
-  margin-bottom: calc(var(--organized-gap) * 0.5);
-  font-size: var(--font-sm);
-}
-
+/* Contact and About cards */
 .organized .contact-info {
   display: flex;
   flex-direction: column;
