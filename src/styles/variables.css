@@ -1,0 +1,23 @@
+:root {
+  --primary-color: #1a73e8;
+  --secondary-color: #5f6368;
+  --text-color: #202124;
+  --light-gray: #f8f9fa;
+  --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --transition-time: 0.8s;
+  --paper-width: min(800px, 90vh / 1.4142);
+  --paper-height: calc(var(--paper-width) * 1.4142);
+  /* Organized mode spacing system */
+  --organized-margin: calc(var(--paper-width) * 0.04);
+  --organized-gap: calc(var(--paper-width) * 0.02);
+  --organized-padding: calc(var(--paper-width) * 0.02);
+  /* Font sizes relative to paper width */
+  --font-xl: calc(var(--paper-width) * 0.05);
+  --font-lg: calc(var(--paper-width) * 0.035);
+  --font-md: calc(var(--paper-width) * 0.028);
+  --font-sm: calc(var(--paper-width) * 0.024);
+  --font-xs: calc(var(--paper-width) * 0.022);
+  /* Grid layout */
+  --left-column-width: 35%;
+  --right-column-width: 65%;
+} 

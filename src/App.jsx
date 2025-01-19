@@ -9,7 +9,10 @@ import {
   SkillsCard,
   ProjectCard
 } from './components/CVCards';
-import './App.css';
+import './styles/variables.css';
+import './styles/base.css';
+import './styles/floating.css';
+import './styles/organized.css';
 
 function App() {
   const totalCards = 2 + cvData.experience.length + cvData.education.length + 1 + cvData.projects.length; // Contact, About, Experience(s), Education(s), Skills, Projects
