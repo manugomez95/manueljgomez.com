@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion, useAnimationControls } from 'framer-motion'
 import './App.css'
+import { b } from 'framer-motion/m';
 
 function App() {
   const [isOrganized, setIsOrganized] = useState(false);
@@ -80,6 +81,7 @@ function App() {
     const angle = (index / 5) * 2 * Math.PI; // distribute cards in a circle (5 is approx number of cards)
     const startX = centerX + radius * Math.cos(angle);
     const startY = centerY + radius * Math.sin(angle);
+    const randomBoolean = Math.random() < 0.5;
 
     return (
       <motion.div 
@@ -109,8 +111,8 @@ function App() {
             }
           } : 
           {
-            x: [startX, boundaries.right, 0],
-            y: [startY, boundaries.bottom, 0],
+            x: [startX, randomBoolean ? boundaries.right : boundaries.left, randomBoolean ? boundaries.left : boundaries.right],
+            y: [startY, randomBoolean ? boundaries.bottom : boundaries.top, randomBoolean ? boundaries.top : boundaries.bottom],
             rotate: 0,
             transition: {
               x: {
