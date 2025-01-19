@@ -42,94 +42,94 @@ function App() {
   useEffect(() => {
     const elements = document.querySelectorAll('.floating-card');
     
-    // Initialize card states if not done yet
-    if (!cardStatesRef.current.length) {
-      cardStatesRef.current = Array.from(elements).map(() => ({
-        x: (Math.random() * (window.innerWidth - 300)) - window.innerWidth/2,
-        y: Math.random() * (window.innerHeight - 200),
-        vx: (Math.random() - 0.5) * 1,
-        vy: (Math.random() - 0.5) * 1,
-        rotation: Math.random() * 360,
-        rotationSpeed: (Math.random() - 0.5) * 0.5,
-        lastX: 0,
-        lastY: 0,
-        lastRotation: 0
-      }));
+    // Helper function to get a random position within screen bounds
+    const getRandomPosition = () => {
+      return {
+        x: (Math.random() * window.innerWidth * 3) - window.innerWidth * 1.5,
+        y: (Math.random() * window.innerHeight * 3) - window.innerHeight * 1.5
+      };
+    };
+
+    // Helper function to get a constant direction
+    const getConstantDirection = () => {
+      const angle = Math.random() * Math.PI * 2;
+      const speed = 5;
+      return {
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed
+      };
+    };
+
+    // Initialize card states or transition to unorganized
+    if (!cardStatesRef.current.length || (!isOrganized && cardStatesRef.current[0].lastX !== undefined)) {
+      cardStatesRef.current = Array.from(elements).map(() => {
+        const pos = getRandomPosition();
+        const vel = getConstantDirection();
+        return {
+          x: pos.x,
+          y: pos.y,
+          vx: vel.vx,
+          vy: vel.vy
+        };
+      });
 
       // Apply initial positions
       elements.forEach((el, index) => {
         const state = cardStatesRef.current[index];
-        el.style.transform = `translate(${state.x}px, ${state.y}px) rotate(${state.rotation}deg)`;
+        el.style.transform = `translate(${state.x}px, ${state.y}px)`;
       });
-    }
 
-    if (isOrganized) {
-      // Save current positions before organizing
+      // Start animation if unorganized
+      if (!isOrganized) {
+        let lastTime = performance.now();
+        
+        const animate = (currentTime) => {
+          const deltaTime = (currentTime - lastTime) / 16;
+          lastTime = currentTime;
+
+          elements.forEach((el, index) => {
+            const state = cardStatesRef.current[index];
+            
+            // Update position
+            state.x += state.vx * deltaTime;
+            state.y += state.vy * deltaTime;
+            
+            // Wrap around screen
+            if (state.x < -window.innerWidth) {
+              state.x = window.innerWidth;
+            } else if (state.x > window.innerWidth) {
+              state.x = -window.innerWidth;
+            }
+            if (state.y < -window.innerHeight) {
+              state.y = window.innerHeight;
+            } else if (state.y > window.innerHeight) {
+              state.y = -window.innerHeight;
+            }
+
+            el.style.transform = `translate(${state.x}px, ${state.y}px)`;
+          });
+
+          if (!isOrganized) {
+            animationFrameRef.current = requestAnimationFrame(animate);
+          }
+        };
+
+        animationFrameRef.current = requestAnimationFrame(animate);
+      }
+    } else if (isOrganized) {
+      // Just save current positions for organized state
       elements.forEach((el, index) => {
         const state = cardStatesRef.current[index];
         state.lastX = state.x;
         state.lastY = state.y;
-        state.lastRotation = state.rotation;
       });
-
-      // Set initial transform for smooth transition
-      elements.forEach((el, index) => {
-        const state = cardStatesRef.current[index];
-        el.style.transform = `translate(${state.lastX}px, ${state.lastY}px) rotate(${state.lastRotation}deg)`;
-        el.offsetHeight; // Force reflow
-      });
-    } else {
-      if (cardStatesRef.current[0].lastX !== undefined) {
-        // Restore last unorganized positions with transition
-        elements.forEach((el, index) => {
-          const state = cardStatesRef.current[index];
-          state.x = state.lastX;
-          state.y = state.lastY;
-          state.rotation = state.lastRotation;
-          el.style.transform = `translate(${state.x}px, ${state.y}px) rotate(${state.rotation}deg)`;
-        });
-
-        // Wait for transition to complete before starting animation
-        setTimeout(() => {
-          // Start animation
-          let lastTime = performance.now();
-          
-          const animate = (currentTime) => {
-            const deltaTime = (currentTime - lastTime) / 16;
-            lastTime = currentTime;
-
-            elements.forEach((el, index) => {
-              const state = cardStatesRef.current[index];
-              
-              // Update position
-              state.x += state.vx * deltaTime;
-              state.y += state.vy * deltaTime;
-              state.rotation += state.rotationSpeed * deltaTime;
-
-              // Screen wrapping
-              if (state.x < -window.innerWidth/2 - 300) state.x = window.innerWidth/2;
-              if (state.x > window.innerWidth/2) state.x = -window.innerWidth/2 - 300;
-              if (state.y < -200) state.y = window.innerHeight;
-              if (state.y > window.innerHeight) state.y = -200;
-
-              el.style.transform = `translate(${state.x}px, ${state.y}px) rotate(${state.rotation}deg)`;
-            });
-
-            if (!isOrganized) {
-              animationFrameRef.current = requestAnimationFrame(animate);
-            }
-          };
-
-          animationFrameRef.current = requestAnimationFrame(animate);
-        }, parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--transition-time')) * 1000);
-
-        return () => {
-          if (animationFrameRef.current) {
-            cancelAnimationFrame(animationFrameRef.current);
-          }
-        };
-      }
     }
+
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
   }, [isOrganized]);
 
   const toggleOrganize = () => {
