@@ -34,6 +34,24 @@ export const ContactCard = ({ initial, animate, email, location }) => (
   </HeaderContentCard>
 );
 
+export const AchievementsCard = ({ initial, animate, achievements }) => (
+  <BaseCard initial={initial} animate={animate} className="achievements-card">
+    <h3>Achievements</h3>
+    <div className="achievements-list">
+      {achievements.map((achievement, index) => (
+        <div key={index} className="achievement-item">
+          <span>{achievement.title}</span>
+          {achievement.relatedProject && (
+            <a href="#" className="project-reference">
+              {achievement.relatedProject} →
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+  </BaseCard>
+);
+
 export const AboutCard = ({ initial, animate, about }) => (
   <HeaderContentCard initial={initial} animate={animate} className="about-card" title="About Me">
     <p>{about}</p>
@@ -150,6 +168,14 @@ ContactCard.propTypes = {
   ...cardBasePropTypes,
   email: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired
+};
+
+AchievementsCard.propTypes = {
+  ...cardBasePropTypes,
+  achievements: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    relatedProject: PropTypes.string
+  })).isRequired
 };
 
 AboutCard.propTypes = {

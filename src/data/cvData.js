@@ -6,6 +6,20 @@ export const cvData = {
     location: "Madrid, Spain",
     about: "Passionate XR Software Engineer with expertise in developing immersive experiences using Unity, Unreal Engine, and WebXR. Specializing in spatial computing, gesture recognition, and optimizing 3D rendering for VR/AR applications. Committed to pushing the boundaries of human-computer interaction through innovative mixed reality solutions."
   },
+  achievements: [
+    {
+      title: "Foosball Arcade. Built and published a game solo and got 3k+ downloads in the Oculus Store.",
+      relatedProject: "Foosball Arcade"
+    },
+    {
+      title: "Attended Meta’s London Presence Platform Hackathon.",
+      relatedProject: "Dinopolis"
+    },
+    {
+      title: "Published research paper on VR interaction patterns",
+      relatedProject: "Dinopolis"
+    }
+  ],
   experience: [
     {
       company: "Acciona",
@@ -57,6 +71,24 @@ export const cvData = {
       technologies: ["Unity"],
       link: "https://play.google.com/store/apps/details?id=com.Dinopolis.Dinopolis&hl=es&pli=1",
       relatedExperience: "Acciona"
+    },
+    {
+      title: "Foosball Arcade",
+      description: "VR game built and published in the Oculus Store with 3k+ downloads.",
+      technologies: ["Unity"],
+      link: "https://play.google.com/store/apps/details?id=com.Dinopolis.Dinopolis&hl=es&pli=1",
+    },
+    {
+      title: "HoloBrain",
+      description: "VR game built and published in the Oculus Store with 3k+ downloads.",
+      technologies: ["Unity"],
+      link: "https://play.google.com/store/apps/details?id=com.Dinopolis.Dinopolis&hl=es&pli=1",
+    },
+    {
+      title: "Bitacora",
+      description: "VR game built and published in the Oculus Store with 3k+ downloads.",
+      technologies: ["Unity"],
+      link: "https://play.google.com/store/apps/details?id=com.Dinopolis.Dinopolis&hl=es&pli=1",
     }
   ]
 }; 

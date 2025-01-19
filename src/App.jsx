@@ -8,7 +8,8 @@ import {
   EducationCard,
   SkillsCard,
   LanguagesCard,
-  ProjectCard
+  ProjectCard,
+  AchievementsCard
 } from './components/CVCards';
 import './styles/variables.css';
 import './styles/base.css';
@@ -16,16 +17,17 @@ import './styles/floating.css';
 import './styles/organized.css';
 
 function App() {
-  const totalCards = 3 + cvData.experience.length + cvData.education.length + 1 + cvData.projects.length; // Contact, About, Skills, Languages, Experience(s), Education(s), Projects
+  const totalCards = 4 + cvData.experience.length + cvData.education.length + 1 + cvData.projects.length; // Contact, About, Skills, Languages, Achievements, Experience(s), Education(s), Projects
   const { isOrganized, setIsOrganized, startPos: contactStartPos, getAnimation: getContactAnimation } = useCardAnimation(0, totalCards);
   const { startPos: aboutStartPos, getAnimation: getAboutAnimation } = useCardAnimation(1, totalCards);
-  const { startPos: skillsStartPos, getAnimation: getSkillsAnimation } = useCardAnimation(2, totalCards);
-  const { startPos: languagesStartPos, getAnimation: getLanguagesAnimation } = useCardAnimation(3, totalCards);
+  const { startPos: achievementsStartPos, getAnimation: getAchievementsAnimation } = useCardAnimation(2, totalCards);
+  const { startPos: skillsStartPos, getAnimation: getSkillsAnimation } = useCardAnimation(3, totalCards);
+  const { startPos: languagesStartPos, getAnimation: getLanguagesAnimation } = useCardAnimation(4, totalCards);
 
   // Pre-calculate all project animations
   const projectAnimations = cvData.projects.map((_, index) => {
     return useCardAnimation(
-      index + 4 + cvData.experience.length + cvData.education.length,
+      index + 5 + cvData.experience.length + cvData.education.length,
       totalCards
     );
   });
@@ -56,6 +58,12 @@ function App() {
             location={cvData.personalInfo.location}
           />
 
+          <AchievementsCard
+            initial={{ x: achievementsStartPos.x, y: achievementsStartPos.y }}
+            animate={getAchievementsAnimation()}
+            achievements={cvData.achievements}
+          />
+
           <SkillsCard
             initial={{ x: skillsStartPos.x, y: skillsStartPos.y }}
             animate={getSkillsAnimation()}
@@ -72,7 +80,7 @@ function App() {
         <div className="right-column">
           {isOrganized && <h3 className="section-title">Experience</h3>}
           {cvData.experience.map((job, index) => {
-            const { startPos, getAnimation } = useCardAnimation(index + 4, totalCards);
+            const { startPos, getAnimation } = useCardAnimation(index + 5, totalCards);
             const relatedProjects = cvData.projects.filter(project => project.relatedExperience === job.company);
             return (
               <ExperienceCard
@@ -87,7 +95,7 @@ function App() {
 
           {isOrganized && <h3 className="section-title education">Education</h3>}
           {cvData.education.map((edu, index) => {
-            const { startPos, getAnimation } = useCardAnimation(index + 4 + cvData.experience.length, totalCards);
+            const { startPos, getAnimation } = useCardAnimation(index + 5 + cvData.experience.length, totalCards);
             const relatedProjects = cvData.projects.filter(project => project.relatedEducation === edu.institution);
             return (
               <EducationCard

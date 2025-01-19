@@ -98,6 +98,38 @@
   font-size: var(--font-xs);
 }
 
+/* Achievements section */
+.organized .achievements-list {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--paper-width) * 0.01);
+}
+
+.organized .achievement-item {
+  font-size: var(--font-xs);
+  padding: calc(var(--paper-width) * 0.008);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.organized .achievement-item::before {
+  content: "🏆";
+  font-size: var(--font-xs);
+}
+
+.organized .achievement-item .project-reference {
+  font-size: var(--font-xs);
+  color: var(--primary-color);
+  text-decoration: none;
+  margin-left: auto;
+}
+
+.organized .achievement-item .project-reference:hover {
+  color: var(--secondary-color);
+}
+
 /* Skills section */
 .organized .skills-list {
   display: flex;

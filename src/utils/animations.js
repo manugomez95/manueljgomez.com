@@ -1,4 +1,4 @@
-export const getRandomDuration = () => 4 + Math.random() * 6;
+export const getRandomDuration = () => 20 + Math.random() * 25;
 
 export const getBoundaries = () => ({
   left: 0,
