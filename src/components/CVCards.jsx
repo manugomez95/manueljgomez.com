@@ -17,21 +17,41 @@ export const AboutCard = ({ initial, animate, about }) => (
   </FloatingCard>
 );
 
-export const ExperienceCard = ({ initial, animate, position, company, period, description }) => (
+export const ExperienceCard = ({ initial, animate, position, company, period, description, projects }) => (
   <FloatingCard className="experience-card" initial={initial} animate={animate}>
     <h4>{position}</h4>
     <h5>{company}</h5>
     <p className="period">{period}</p>
     <p>{description}</p>
+    {projects && projects.length > 0 && (
+      <div className="related-projects">
+        <p className="projects-label">Related Projects:</p>
+        {projects.map((project, index) => (
+          <a key={index} href={project.link} target="_blank" rel="noopener noreferrer" className="project-reference">
+            {project.title} →
+          </a>
+        ))}
+      </div>
+    )}
   </FloatingCard>
 );
 
-export const EducationCard = ({ initial, animate, degree, institution, period, description }) => (
+export const EducationCard = ({ initial, animate, degree, institution, period, description, projects }) => (
   <FloatingCard className="education-card" initial={initial} animate={animate}>
     <h4>{degree}</h4>
     <h5>{institution}</h5>
     <p className="period">{period}</p>
     <p>{description}</p>
+    {projects && projects.length > 0 && (
+      <div className="related-projects">
+        <p className="projects-label">Related Projects:</p>
+        {projects.map((project, index) => (
+          <a key={index} href={project.link} target="_blank" rel="noopener noreferrer" className="project-reference">
+            {project.title} →
+          </a>
+        ))}
+      </div>
+    )}
   </FloatingCard>
 );
 
@@ -43,6 +63,23 @@ export const SkillsCard = ({ initial, animate, skills }) => (
         <span key={index} className="skill-item">{skill}</span>
       ))}
     </div>
+  </FloatingCard>
+);
+
+export const ProjectCard = ({ initial, animate, title, description, technologies, link }) => (
+  <FloatingCard className="project-card" initial={initial} animate={animate}>
+    <h4>{title}</h4>
+    <p>{description}</p>
+    <div className="project-technologies">
+      {technologies.map((tech, index) => (
+        <span key={index} className="tech-item">{tech}</span>
+      ))}
+    </div>
+    {link && (
+      <a href={link} target="_blank" rel="noopener noreferrer" className="project-link">
+        View Project →
+      </a>
+    )}
   </FloatingCard>
 );
 
@@ -68,7 +105,11 @@ ExperienceCard.propTypes = {
   position: PropTypes.string.isRequired,
   company: PropTypes.string.isRequired,
   period: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired
+  description: PropTypes.string.isRequired,
+  projects: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired
+  }))
 };
 
 EducationCard.propTypes = {
@@ -76,10 +117,22 @@ EducationCard.propTypes = {
   degree: PropTypes.string.isRequired,
   institution: PropTypes.string.isRequired,
   period: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired
+  description: PropTypes.string.isRequired,
+  projects: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired
+  }))
 };
 
 SkillsCard.propTypes = {
   ...cardBasePropTypes,
   skills: PropTypes.arrayOf(PropTypes.string).isRequired
+};
+
+ProjectCard.propTypes = {
+  ...cardBasePropTypes,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  technologies: PropTypes.arrayOf(PropTypes.string).isRequired,
+  link: PropTypes.string
 }; 
