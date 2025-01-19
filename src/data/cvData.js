@@ -1,10 +1,10 @@
 export const cvData = {
   personalInfo: {
     name: "Manuel Gómez",
-    title: "XR Software Engineer",
+    title: "XR Software Engineer", 
     email: "manugomez@protonmail.com",
     location: "Madrid, Spain",
-    about: "A brief description about yourself and your professional goals."
+    about: "Passionate XR Software Engineer with expertise in developing immersive experiences using Unity, Unreal Engine, and WebXR. Specializing in spatial computing, gesture recognition, and optimizing 3D rendering for VR/AR applications. Committed to pushing the boundaries of human-computer interaction through innovative mixed reality solutions."
   },
   experience: [
     {
