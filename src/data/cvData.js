@@ -16,7 +16,7 @@ export const cvData = {
       relatedProject: "Dinopolis"
     },
     {
-      title: "Published research paper on VR interaction patterns",
+      title: "Published a paper: Augmented Reality Feedback for Exoskeleton-Assisted Walking. A Feasibility Study.",
       relatedProject: "Dinopolis"
     }
   ],
@@ -76,19 +76,24 @@ export const cvData = {
       title: "Foosball Arcade",
       description: "VR game built and published in the Oculus Store with 3k+ downloads.",
       technologies: ["Unity"],
-      link: "https://play.google.com/store/apps/details?id=com.Dinopolis.Dinopolis&hl=es&pli=1",
+      link: "https://www.youtube.com/watch?v=blJ9CK8DEdM",
     },
     {
       title: "HoloBrain",
-      description: "VR game built and published in the Oculus Store with 3k+ downloads.",
+      description: "VR note taking app.",
       technologies: ["Unity"],
-      link: "https://play.google.com/store/apps/details?id=com.Dinopolis.Dinopolis&hl=es&pli=1",
+      link: "https://www.youtube.com/shorts/6wJSK002Hik",
     },
     {
       title: "Bitacora",
-      description: "VR game built and published in the Oculus Store with 3k+ downloads.",
-      technologies: ["Unity"],
-      link: "https://play.google.com/store/apps/details?id=com.Dinopolis.Dinopolis&hl=es&pli=1",
+      description: "Multi-database client made with Flutter",
+      technologies: ["Flutter"],
+    },
+    {
+      title: "Master's Final Project: AR UI for lower-limb exoskeletons",
+      description: "Augmented Reality UI for lower-limb exoskeletons",
+      technologies: ["Unity", "HoloLens"],
+      link: "https://www.youtube.com/watch?v=jh0wdRqqqEQ",
     }
   ]
 }; 
