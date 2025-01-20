@@ -1,14 +1,52 @@
 import PropTypes from 'prop-types';
 import { FloatingCard } from './FloatingCard';
 
-const BaseCard = ({ initial, animate, className, children }) => (
-  <FloatingCard className={className} initial={initial} animate={animate}>
+export const BackgroundGrid = ({ projects }) => {
+  // Create a grid with repeated project cards (8x8 grid = 64 cards)
+  const totalSlots = 64;
+  
+  // Create a shuffled array of project indices
+  const shuffledIndices = Array.from({ length: totalSlots }, (_, i) => ({
+    projectIndex: Math.floor(Math.random() * projects.length),
+    colorIndex: Math.floor(Math.random() * 8)
+  }));
+
+  return (
+    <div className="background-grid">
+      {shuffledIndices.map((indices, index) => {
+        const project = projects[indices.projectIndex];
+        return (
+          <div key={index} className={`background-card color-${indices.colorIndex + 1}`}>
+            <h4>{project.title}</h4>
+            <p>{project.description}</p>
+            <div className="background-technologies">
+              {project.technologies.slice(0, 3).map((tech, techIndex) => (
+                <span key={techIndex} className="background-tech-item">{tech}</span>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+BackgroundGrid.propTypes = {
+  projects: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    technologies: PropTypes.arrayOf(PropTypes.string).isRequired,
+  })).isRequired
+};
+
+const BaseCard = ({ className, children }) => (
+  <FloatingCard className={className}>
     {children}
   </FloatingCard>
 );
 
-const ListCard = ({ initial, animate, className, title, items, itemClassName }) => (
-  <BaseCard initial={initial} animate={animate} className={className}>
+const ListCard = ({ className, title, items, itemClassName }) => (
+  <BaseCard className={className}>
     <h3>{title}</h3>
     <div className={`${className}-list`}>
       {items.map((item, index) => (
@@ -18,15 +56,15 @@ const ListCard = ({ initial, animate, className, title, items, itemClassName }) 
   </BaseCard>
 );
 
-const HeaderContentCard = ({ initial, animate, className, title, children }) => (
-  <BaseCard initial={initial} animate={animate} className={className}>
+const HeaderContentCard = ({ className, title, children }) => (
+  <BaseCard className={className}>
     <h3>{title}</h3>
     {children}
   </BaseCard>
 );
 
-export const ContactCard = ({ initial, animate, email, location }) => (
-  <HeaderContentCard initial={initial} animate={animate} className="contact-card" title="Contact">
+export const ContactCard = ({ email, location }) => (
+  <HeaderContentCard className="contact-card" title="Contact">
     <div className="contact-info">
       <p>📧 {email}</p>
       <p>📍 {location}</p>
@@ -34,8 +72,8 @@ export const ContactCard = ({ initial, animate, email, location }) => (
   </HeaderContentCard>
 );
 
-export const AchievementsCard = ({ initial, animate, achievements }) => (
-  <BaseCard initial={initial} animate={animate} className="achievements-card">
+export const AchievementsCard = ({ achievements }) => (
+  <BaseCard className="achievements-card">
     <h3>Achievements</h3>
     <div className="achievements-list">
       {achievements.map((achievement, index) => (
@@ -52,14 +90,14 @@ export const AchievementsCard = ({ initial, animate, achievements }) => (
   </BaseCard>
 );
 
-export const AboutCard = ({ initial, animate, about }) => (
-  <HeaderContentCard initial={initial} animate={animate} className="about-card" title="About Me">
+export const AboutCard = ({ about }) => (
+  <HeaderContentCard className="about-card" title="About Me">
     <p>{about}</p>
   </HeaderContentCard>
 );
 
-const BaseInfoCard = ({ initial, animate, className, title, subtitle, period, description, projects }) => (
-  <BaseCard className={className} initial={initial} animate={animate}>
+const BaseInfoCard = ({ className, title, subtitle, period, description, projects }) => (
+  <BaseCard className={className}>
     <h4>{title} <span className="separator">|</span> <span className="subtitle">{subtitle}</span></h4>
     <p className="period">{period}</p>
     <p>{description}</p>
@@ -76,32 +114,26 @@ const BaseInfoCard = ({ initial, animate, className, title, subtitle, period, de
   </BaseCard>
 );
 
-export const ExperienceCard = ({ initial, animate, position, company, ...rest }) => (
+export const ExperienceCard = ({ position, company, ...rest }) => (
   <BaseInfoCard
     className="experience-card"
-    initial={initial}
-    animate={animate}
     title={position}
     subtitle={company}
     {...rest}
   />
 );
 
-export const EducationCard = ({ initial, animate, degree, institution, ...rest }) => (
+export const EducationCard = ({ degree, institution, ...rest }) => (
   <BaseInfoCard
     className="education-card"
-    initial={initial}
-    animate={animate}
     title={degree}
     subtitle={institution}
     {...rest}
   />
 );
 
-export const SkillsCard = ({ initial, animate, skills }) => (
+export const SkillsCard = ({ skills }) => (
   <ListCard
-    initial={initial}
-    animate={animate}
     className="skills-card"
     title="Skills"
     items={skills}
@@ -109,10 +141,8 @@ export const SkillsCard = ({ initial, animate, skills }) => (
   />
 );
 
-export const LanguagesCard = ({ initial, animate, languages }) => (
+export const LanguagesCard = ({ languages }) => (
   <ListCard
-    initial={initial}
-    animate={animate}
     className="languages-card"
     title="Languages"
     items={languages}
@@ -120,8 +150,8 @@ export const LanguagesCard = ({ initial, animate, languages }) => (
   />
 );
 
-export const ProjectCard = ({ initial, animate, title, description, technologies, link }) => (
-  <BaseCard initial={initial} animate={animate} className="project-card">
+export const ProjectCard = ({ title, description, technologies, link }) => (
+  <BaseCard className="project-card">
     <h4>{title}</h4>
     <p>{description}</p>
     <div className="project-technologies">
@@ -139,18 +169,13 @@ export const ProjectCard = ({ initial, animate, title, description, technologies
 
 // PropTypes
 const cardBasePropTypes = {
-  initial: PropTypes.object.isRequired,
-  animate: PropTypes.object.isRequired
-};
-
-BaseCard.propTypes = {
-  ...cardBasePropTypes,
   className: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired
 };
 
+BaseCard.propTypes = cardBasePropTypes;
+
 ListCard.propTypes = {
-  ...cardBasePropTypes,
   className: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   items: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -158,20 +183,17 @@ ListCard.propTypes = {
 };
 
 HeaderContentCard.propTypes = {
-  ...cardBasePropTypes,
   className: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired
 };
 
 ContactCard.propTypes = {
-  ...cardBasePropTypes,
   email: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired
 };
 
 AchievementsCard.propTypes = {
-  ...cardBasePropTypes,
   achievements: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     relatedProject: PropTypes.string
@@ -179,12 +201,10 @@ AchievementsCard.propTypes = {
 };
 
 AboutCard.propTypes = {
-  ...cardBasePropTypes,
   about: PropTypes.string.isRequired
 };
 
 ExperienceCard.propTypes = {
-  ...cardBasePropTypes,
   position: PropTypes.string.isRequired,
   company: PropTypes.string.isRequired,
   period: PropTypes.string.isRequired,
@@ -196,7 +216,6 @@ ExperienceCard.propTypes = {
 };
 
 EducationCard.propTypes = {
-  ...cardBasePropTypes,
   degree: PropTypes.string.isRequired,
   institution: PropTypes.string.isRequired,
   period: PropTypes.string.isRequired,
@@ -208,17 +227,14 @@ EducationCard.propTypes = {
 };
 
 SkillsCard.propTypes = {
-  ...cardBasePropTypes,
   skills: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 LanguagesCard.propTypes = {
-  ...cardBasePropTypes,
   languages: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 ProjectCard.propTypes = {
-  ...cardBasePropTypes,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   technologies: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -226,7 +242,6 @@ ProjectCard.propTypes = {
 };
 
 BaseInfoCard.propTypes = {
-  ...cardBasePropTypes,
   className: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,

@@ -9,7 +9,8 @@ import {
   SkillsCard,
   LanguagesCard,
   ProjectCard,
-  AchievementsCard
+  AchievementsCard,
+  BackgroundGrid
 } from './components/CVCards';
 import './styles/variables.css';
 import './styles/base.css';
@@ -48,6 +49,7 @@ function App() {
 
   return (
     <div className={`cv-container ${isOrganized ? 'organized' : ''}`}>
+      {!isOrganized && <BackgroundGrid projects={cvData.projects} />}
       <div className="name-center" onClick={toggleOrganize}>
         <h1>{cvData.personalInfo.name}</h1>
         <h2>{cvData.personalInfo.title}</h2>
@@ -121,19 +123,7 @@ function App() {
               })}
             </div>
           </>
-        ) : (
-          cvData.projects.map((project, index) => {
-            const { startPos, getAnimation } = projectAnimations[index];
-            return (
-              <ProjectCard
-                key={index}
-                initial={{ x: startPos.x, y: startPos.y }}
-                animate={getAnimation()}
-                {...project}
-              />
-            );
-          })
-        )}
+        ) : null}
       </div>
     </div>
   );
