@@ -12,7 +12,7 @@ export const cvData = {
       relatedProject: "Foosball Arcade"
     },
     {
-      title: "Attended Meta’s London Presence Platform Hackathon.",
+      title: "Attended Meta's London Presence Platform Hackathon.",
       relatedProject: "Dinopolis"
     },
     {
@@ -70,30 +70,46 @@ export const cvData = {
       description: "AR app for the Dinopolis museum in Teruel, Spain",
       technologies: ["Unity"],
       link: "https://play.google.com/store/apps/details?id=com.Dinopolis.Dinopolis&hl=es&pli=1",
-      relatedExperience: "Acciona"
+      relatedExperience: "Acciona",
+      imageUrl: "/images/projects/dinopolis.png"
     },
     {
       title: "Foosball Arcade",
       description: "VR game built and published in the Oculus Store with 3k+ downloads.",
       technologies: ["Unity"],
       link: "https://www.youtube.com/watch?v=blJ9CK8DEdM",
+      imageUrl: "/images/projects/foosball.png"
     },
     {
       title: "HoloBrain",
       description: "VR note taking app.",
       technologies: ["Unity"],
       link: "https://www.youtube.com/shorts/6wJSK002Hik",
+      imageUrl: "/images/projects/holobrain.png"
     },
     {
       title: "Bitacora",
       description: "Multi-database client made with Flutter",
       technologies: ["Flutter"],
+      imageUrl: "/images/projects/bitacora.png"
     },
     {
       title: "Master's Final Project: AR UI for lower-limb exoskeletons",
       description: "Augmented Reality UI for lower-limb exoskeletons",
       technologies: ["Unity", "HoloLens"],
       link: "https://www.youtube.com/watch?v=jh0wdRqqqEQ",
+      imageUrl: "/images/projects/exoskeleton.jpg"
     }
   ]
-}; 
+};
+
+export const decorativeImages = [
+  "/images/decorative/code1.jpg",
+  "/images/decorative/vr1.jpg",
+  "/images/decorative/ar1.jpg",
+  "/images/decorative/unity1.jpg",
+  "/images/decorative/tech1.jpg",
+  "/images/decorative/gaming1.jpg",
+  "/images/decorative/3d1.jpg",
+  "/images/decorative/dev1.jpg"
+]; 

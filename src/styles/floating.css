@@ -13,10 +13,19 @@
 
 @keyframes slideGrid {
   0% {
-    transform: translate(0, 0);
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(-25%, 0) rotate(3deg);
+  }
+  50% {
+    transform: translate(-25%, -25%) rotate(0deg);
+  }
+  75% {
+    transform: translate(0, -25%) rotate(-3deg);
   }
   100% {
-    transform: translate(-100%, -100%);
+    transform: translate(0, 0) rotate(0deg);
   }
 }
 
@@ -34,29 +43,61 @@
   padding: 0;
   pointer-events: none;
   z-index: 1;
-  animation: slideGrid 30s linear infinite;
+  animation: slideGrid 30s ease-in-out infinite;
+  transform-origin: center center;
 }
 
 .background-card {
-  background: white;
+  background: rgba(0, 0, 0, 0.5);
   padding: 1.5rem;
   overflow: hidden;
   opacity: 0.6;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  position: relative;
+}
+
+.background-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8;
+  z-index: -1;
+  transition: transform 0.3s ease;
 }
 
 .background-card:hover {
-  opacity: 0.75;
+  opacity: 0.95;
 }
 
-.background-card.color-1 { background: #FF6B6B; }
-.background-card.color-2 { background: #4ECDC4; }
-.background-card.color-3 { background: #45B7D1; }
-.background-card.color-4 { background: #96CEB4; }
-.background-card.color-5 { background: #FFEEAD; }
-.background-card.color-6 { background: #D4A5A5; }
-.background-card.color-7 { background: #9B97B2; }
-.background-card.color-8 { background: #FFB6B9; }
+.background-card:hover::before {
+  transform: scale(1.1);
+}
+
+.background-card h4,
+.background-card p,
+.background-tech-item {
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Remove color classes as we'll use images instead */
+.background-card.color-1,
+.background-card.color-2,
+.background-card.color-3,
+.background-card.color-4,
+.background-card.color-5,
+.background-card.color-6,
+.background-card.color-7,
+.background-card.color-8 {
+  background: rgba(0, 0, 0, 0.5);
+}
 
 .background-card h4 {
   color: white;

@@ -1,29 +1,47 @@
 import PropTypes from 'prop-types';
 import { FloatingCard } from './FloatingCard';
+import { decorativeImages } from '../data/cvData';
 
 export const BackgroundGrid = ({ projects }) => {
   // Create a grid with repeated project cards (8x8 grid = 64 cards)
   const totalSlots = 64;
   
-  // Create a shuffled array of project indices
-  const shuffledIndices = Array.from({ length: totalSlots }, (_, i) => ({
-    projectIndex: Math.floor(Math.random() * projects.length),
-    colorIndex: Math.floor(Math.random() * 8)
-  }));
+  // Create a shuffled array of project indices and decorative images
+  const shuffledIndices = Array.from({ length: totalSlots }, (_, i) => {
+    // 70% chance to show a project, 30% chance to show a decorative image
+    const useProject = Math.random() < 0.7;
+    return {
+      projectIndex: Math.floor(Math.random() * projects.length),
+      imageIndex: Math.floor(Math.random() * decorativeImages.length),
+      useProject
+    };
+  });
 
   return (
     <div className="background-grid">
       {shuffledIndices.map((indices, index) => {
         const project = projects[indices.projectIndex];
+        const imageUrl = indices.useProject ? project.imageUrl : decorativeImages[indices.imageIndex];
+        
         return (
-          <div key={index} className={`background-card color-${indices.colorIndex + 1}`}>
-            <h4>{project.title}</h4>
-            <p>{project.description}</p>
-            <div className="background-technologies">
-              {project.technologies.slice(0, 3).map((tech, techIndex) => (
-                <span key={techIndex} className="background-tech-item">{tech}</span>
-              ))}
-            </div>
+          <div 
+            key={index} 
+            className="background-card"
+            style={{
+              '--bg-image': `url(${imageUrl})`
+            }}
+          >
+            {indices.useProject && (
+              <>
+                <h4>{project.title}</h4>
+                <p>{project.description}</p>
+                <div className="background-technologies">
+                  {project.technologies.slice(0, 3).map((tech, techIndex) => (
+                    <span key={techIndex} className="background-tech-item">{tech}</span>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         );
       })}
@@ -36,6 +54,7 @@ BackgroundGrid.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     technologies: PropTypes.arrayOf(PropTypes.string).isRequired,
+    imageUrl: PropTypes.string.isRequired,
   })).isRequired
 };
 
