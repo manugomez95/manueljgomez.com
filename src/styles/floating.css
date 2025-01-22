@@ -39,7 +39,6 @@
   grid-template-rows: repeat(8, min(60vw, 60vh));
   gap: 0;
   padding: 0;
-  pointer-events: none;
   z-index: 1;
   animation: slideGrid 30s ease-in-out infinite;
   transform-origin: center center;
@@ -49,7 +48,7 @@
   background: rgba(0, 0, 0, 0.5);
   padding: 1.5rem;
   overflow: hidden;
-  opacity: 0.6;
+  opacity: 0.75;
   transition: opacity 0.3s ease, transform 0.3s ease;
   position: relative;
 }
@@ -70,7 +69,7 @@
 }
 
 .background-card:hover {
-  opacity: 0.95;
+  opacity: 0.9;
 }
 
 .background-card:hover::before {
