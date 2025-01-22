@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import encode from 'jwt-encode';
 import { Link } from 'react-router-dom';
 
-const METABASE_SITE_URL = "http://34.175.200.180";
+const METABASE_SITE_URL = "https://dashboard.manueljgomez.com";
 const METABASE_SECRET_KEY = "8ca98fde498e8ff4e449f30d8afc0e9aa9c4fa692541c316485ca391c92930a5";
 
 export function MetabaseDashboard() {
