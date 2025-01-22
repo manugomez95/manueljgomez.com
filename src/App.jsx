@@ -1,6 +1,8 @@
 import { useCardAnimation } from './hooks/useCardAnimation';
 import { cvData } from './data/cvData';
 import { getInitialPosition } from './utils/animations';
+import { Routes, Route, Link } from 'react-router-dom';
+import { MetabaseDashboard } from './components/MetabaseDashboard';
 import {
   ContactCard,
   AboutCard,
@@ -17,8 +19,8 @@ import './styles/base.css';
 import './styles/floating.css';
 import './styles/organized.css';
 
-function App() {
-  const totalCards = 4 + cvData.experience.length + cvData.education.length + 1 + cvData.projects.length; // Contact, About, Skills, Languages, Achievements, Experience(s), Education(s), Projects
+function CVPage() {
+  const totalCards = 4 + cvData.experience.length + cvData.education.length + 1 + cvData.projects.length;
   const { isOrganized, setIsOrganized, startPos: contactStartPos, getAnimation: getContactAnimation } = useCardAnimation(0, totalCards);
   const { startPos: aboutStartPos, getAnimation: getAboutAnimation } = useCardAnimation(1, totalCards);
   const { startPos: achievementsStartPos, getAnimation: getAchievementsAnimation } = useCardAnimation(2, totalCards);
@@ -126,6 +128,15 @@ function App() {
         ) : null}
       </div>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<CVPage />} />
+      <Route path="/dashboard" element={<MetabaseDashboard />} />
+    </Routes>
   );
 }
 
