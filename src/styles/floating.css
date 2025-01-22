@@ -37,8 +37,8 @@
   width: 200vw;
   height: 200vh;
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(8, 1fr);
+  grid-template-columns: repeat(8, min(90vw, 90vh));
+  grid-template-rows: repeat(8, min(60vw, 60vh));
   gap: 0;
   padding: 0;
   pointer-events: none;
