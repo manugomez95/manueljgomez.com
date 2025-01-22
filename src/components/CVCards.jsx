@@ -36,7 +36,7 @@ export const BackgroundGrid = ({ projects }) => {
                 <h4>{project.title}</h4>
                 <p>{project.description}</p>
                 <div className="background-technologies">
-                  {project.technologies.slice(0, 3).map((tech, techIndex) => (
+                  {project.technologies.map((tech, techIndex) => (
                     <span key={techIndex} className="background-tech-item">{tech}</span>
                   ))}
                 </div>
