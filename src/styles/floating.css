@@ -137,7 +137,8 @@
   transform: translate(-50%, -50%);
   text-align: center;
   z-index: 100;
-  width: 100%;
+  width: fit-content;
+  cursor: pointer;
   transition: all var(--transition-time) cubic-bezier(0.4, 0, 0.2, 1);
 }
 

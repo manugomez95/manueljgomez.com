@@ -230,8 +230,8 @@
 .organized .name-center {
   position: relative;
   top: 0;
-  left: 0;
-  transform: none;
+  left: 50%;
+  transform: translateX(-50%);
   margin-bottom: var(--organized-gap);
   grid-column: 1 / -1;
 }
