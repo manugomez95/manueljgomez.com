@@ -52,24 +52,6 @@ function CVPage() {
   return (
     <div className={`cv-container ${isOrganized ? 'organized' : ''}`}>
       {!isOrganized && <BackgroundGrid projects={cvData.projects} />}
-      <Link 
-        to="/dashboard" 
-        style={{
-          position: 'fixed',
-          top: '20px',
-          right: '20px',
-          padding: '6px 12px',
-          color: '#666',
-          textDecoration: 'none',
-          fontSize: '14px',
-          border: '1px solid #ddd',
-          borderRadius: '4px',
-          backgroundColor: 'rgba(255, 255, 255, 0.9)',
-          zIndex: 1000
-        }}
-      >
-        Dashboard
-      </Link>
       <div className="name-center" onClick={toggleOrganize}>
         <h1>{cvData.personalInfo.name}</h1>
         <h2>{cvData.personalInfo.title}</h2>
@@ -153,7 +135,6 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<CVPage />} />
-      <Route path="/dashboard" element={<MetabaseDashboard />} />
     </Routes>
   );
 }
