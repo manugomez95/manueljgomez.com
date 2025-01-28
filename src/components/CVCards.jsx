@@ -3,17 +3,15 @@ import { FloatingCard } from './FloatingCard';
 import { decorativeImages } from '../data/cvData';
 
 export const BackgroundGrid = ({ projects }) => {
-  // Create a grid with repeated project cards (8x8 grid = 64 cards)
-  const totalSlots = 64;
+  // Create a grid with repeated project cards (6x6 grid = 36 cards)
+  const totalSlots = 36;
   
   // Create a shuffled array of project indices and decorative images
   const shuffledIndices = Array.from({ length: totalSlots }, (_, i) => {
-    // 70% chance to show a project, 30% chance to show a decorative image
-    const useProject = Math.random() < 0.7;
     return {
-      projectIndex: Math.floor(Math.random() * projects.length),
-      imageIndex: Math.floor(Math.random() * decorativeImages.length),
-      useProject
+      projectIndex: i % projects.length, // Cycle through projects in order
+      imageIndex: 0, // Not used anymore
+      useProject: true // Always show projects
     };
   });
 

@@ -234,4 +234,13 @@
   transform: none;
   margin-bottom: var(--organized-gap);
   grid-column: 1 / -1;
-} 
+}
+
+.organized .name-center h1 {
+  color: var(--primary-color);
+}
+
+.organized .name-center h2 {
+  color: var(--secondary-color);
+}
+

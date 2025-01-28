@@ -30,13 +30,13 @@
 /* Background grid layout */
 .background-grid {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: -60vh;
+  left: -60vw;
   width: 200vw;
   height: 200vh;
   display: grid;
-  grid-template-columns: repeat(8, min(90vw, 90vh));
-  grid-template-rows: repeat(8, min(60vw, 60vh));
+  grid-template-columns: repeat(6, min(90vw, 90vh));
+  grid-template-rows: repeat(6, min(60vw, 60vh));
   gap: 0;
   padding: 0;
   z-index: 1;
