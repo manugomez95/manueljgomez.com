@@ -1,141 +1,159 @@
-import { useCardAnimation } from './hooks/useCardAnimation';
+import { useState } from 'react';
 import { cvData } from './data/cvData';
-import { getInitialPosition } from './utils/animations';
-import { Routes, Route, Link } from 'react-router-dom';
-import { MetabaseDashboard } from './components/MetabaseDashboard';
-import {
-  ContactCard,
-  AboutCard,
-  ExperienceCard,
-  EducationCard,
-  SkillsCard,
-  LanguagesCard,
-  ProjectCard,
-  AchievementsCard,
-  BackgroundGrid
-} from './components/CVCards';
-import './styles/variables.css';
-import './styles/base.css';
-import './styles/floating.css';
-import './styles/organized.css';
 
-function CVPage() {
-  const totalCards = 4 + cvData.experience.length + cvData.education.length + 1 + cvData.projects.length;
-  const { isOrganized, setIsOrganized, startPos: contactStartPos, getAnimation: getContactAnimation } = useCardAnimation(0, totalCards);
-  const { startPos: aboutStartPos, getAnimation: getAboutAnimation } = useCardAnimation(1, totalCards);
-  const { startPos: achievementsStartPos, getAnimation: getAchievementsAnimation } = useCardAnimation(2, totalCards);
-  const { startPos: skillsStartPos, getAnimation: getSkillsAnimation } = useCardAnimation(3, totalCards);
-  const { startPos: languagesStartPos, getAnimation: getLanguagesAnimation } = useCardAnimation(4, totalCards);
-
-  // Pre-calculate experience animations
-  const experienceAnimations = cvData.experience.map((_, index) => {
-    return useCardAnimation(index + 5, totalCards);
+// Theme hook
+function useTheme() {
+  const [isDark, setIsDark] = useState(() => {
+    const saved = localStorage.getItem('theme');
+    return saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches);
   });
 
-  // Pre-calculate education animations
-  const educationAnimations = cvData.education.map((_, index) => {
-    return useCardAnimation(index + 5 + cvData.experience.length, totalCards);
-  });
-
-  // Pre-calculate project animations
-  const projectAnimations = cvData.projects.map((_, index) => {
-    return useCardAnimation(
-      index + 5 + cvData.experience.length + cvData.education.length,
-      totalCards
-    );
-  });
-
-  const toggleOrganize = () => {
-    setIsOrganized(!isOrganized);
+  const toggleTheme = () => {
+    const newTheme = !isDark;
+    setIsDark(newTheme);
+    localStorage.setItem('theme', newTheme ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', newTheme ? 'dark' : 'light');
   };
 
+  return { isDark, toggleTheme };
+}
+
+function Header() {
+  const { isDark, toggleTheme } = useTheme();
+  
   return (
-    <div className={`cv-container ${isOrganized ? 'organized' : ''}`}>
-      {!isOrganized && <BackgroundGrid projects={cvData.projects} />}
-      <div className="name-center" onClick={toggleOrganize}>
-        <h1>{cvData.personalInfo.name}</h1>
-        <h2>{cvData.personalInfo.title}</h2>
+    <header className="header">
+      <div className="container">
+        <div className="nav">
+          <h1 className="logo">{cvData.personalInfo.name}</h1>
+          <nav className="nav-links">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+            <button className="theme-toggle" onClick={toggleTheme}>
+              {isDark ? '☀️' : '🌙'}
+            </button>
+          </nav>
+        </div>
       </div>
+    </header>
+  );
+}
 
-      <div className="floating-elements">
-        {isOrganized ? (
-          <>
-            <div className="left-column">
-              <AboutCard
-                initial={{ x: aboutStartPos.x, y: aboutStartPos.y }}
-                animate={getAboutAnimation()}
-                about={cvData.personalInfo.about}
-              />
-
-              <ContactCard
-                initial={{ x: contactStartPos.x, y: contactStartPos.y }}
-                animate={getContactAnimation()}
-                email={cvData.personalInfo.email}
-                location={cvData.personalInfo.location}
-              />
-
-              <AchievementsCard
-                initial={{ x: achievementsStartPos.x, y: achievementsStartPos.y }}
-                animate={getAchievementsAnimation()}
-                achievements={cvData.achievements}
-              />
-
-              <SkillsCard
-                initial={{ x: skillsStartPos.x, y: skillsStartPos.y }}
-                animate={getSkillsAnimation()}
-                skills={cvData.skills}
-              />
-
-              <LanguagesCard
-                initial={{ x: languagesStartPos.x, y: languagesStartPos.y }}
-                animate={getLanguagesAnimation()}
-                languages={cvData.languages}
-              />
-            </div>
-
-            <div className="right-column">
-              <h3 className="section-title">Experience</h3>
-              {cvData.experience.map((job, index) => {
-                const { startPos, getAnimation } = experienceAnimations[index];
-                const relatedProjects = cvData.projects.filter(project => project.relatedExperience === job.company);
-                return (
-                  <ExperienceCard
-                    key={index}
-                    initial={{ x: startPos.x, y: startPos.y }}
-                    animate={getAnimation()}
-                    {...job}
-                    projects={relatedProjects}
-                  />
-                );
-              })}
-
-              <h3 className="section-title education">Education</h3>
-              {cvData.education.map((edu, index) => {
-                const { startPos, getAnimation } = educationAnimations[index];
-                const relatedProjects = cvData.projects.filter(project => project.relatedEducation === edu.institution);
-                return (
-                  <EducationCard
-                    key={index}
-                    initial={{ x: startPos.x, y: startPos.y }}
-                    animate={getAnimation()}
-                    {...edu}
-                    projects={relatedProjects}
-                  />
-                );
-              })}
-            </div>
-          </>
-        ) : null}
+function Hero() {
+  return (
+    <section className="hero">
+      <div className="container">
+        <h1 className="hero-title">{cvData.personalInfo.name}</h1>
+        <p className="hero-subtitle">{cvData.personalInfo.title}</p>
+        <p className="hero-description">{cvData.personalInfo.about}</p>
+        <div className="hero-actions">
+          <a href="#projects" className="btn btn-primary">View Projects</a>
+          <a href="#contact" className="btn btn-secondary">Get In Touch</a>
+        </div>
       </div>
-    </div>
+    </section>
+  );
+}
+
+function Projects() {
+  return (
+    <section id="projects" className="projects">
+      <div className="container">
+        <h2 className="section-title">Featured Projects</h2>
+        <div className="projects-grid">
+          {cvData.projects.map((project, index) => (
+            <div key={index} className="project-card">
+              {project.imageUrl && (
+                <div className="project-image">
+                  <img src={project.imageUrl} alt={project.title} loading="lazy" />
+                </div>
+              )}
+              <div className="project-content">
+                <h3 className="project-title">{project.title}</h3>
+                <p className="project-description">{project.description}</p>
+                <div className="project-tech">
+                  {project.technologies.map((tech, techIndex) => (
+                    <span key={techIndex} className="tech-tag">{tech}</span>
+                  ))}
+                </div>
+                {project.link && (
+                  <a 
+                    href={project.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="project-link"
+                  >
+                    View Project →
+                  </a>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function About() {
+  return (
+    <section id="about" className="about">
+      <div className="container">
+        <h2 className="section-title">Skills & Experience</h2>
+        <div className="about-grid">
+          <div className="skills-section">
+            <h3>Technologies</h3>
+            <div className="skills-list">
+              {cvData.skills.map((skill, index) => (
+                <span key={index} className="skill-tag">{skill}</span>
+              ))}
+            </div>
+          </div>
+          <div className="languages-section">
+            <h3>Languages</h3>
+            <div className="skills-list">
+              {cvData.languages.map((language, index) => (
+                <span key={index} className="skill-tag">{language}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Contact() {
+  return (
+    <section id="contact" className="contact">
+      <div className="container">
+        <h2 className="section-title">Let's Connect</h2>
+        <div className="contact-content">
+          <p>Interested in working together or have a question?</p>
+          <div className="contact-info">
+            <a href={`mailto:${cvData.personalInfo.email}`} className="contact-link">
+              📧 {cvData.personalInfo.email}
+            </a>
+            <span className="contact-location">📍 {cvData.personalInfo.location}</span>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<CVPage />} />
-    </Routes>
+    <div className="app">
+      <Header />
+      <main>
+        <Hero />
+        <Projects />
+        <About />
+        <Contact />
+      </main>
+    </div>
   );
 }
 
