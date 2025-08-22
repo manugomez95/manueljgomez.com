@@ -110,6 +110,12 @@ function Contact() {
             <a href={`mailto:${cvData.personalInfo.email}`} className="contact-link">
               📧 {cvData.personalInfo.email}
             </a>
+            <a href={cvData.personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="contact-link">
+              💼 LinkedIn
+            </a>
+            <a href={cvData.personalInfo.twitter} target="_blank" rel="noopener noreferrer" className="contact-link">
+              🐦 X (Twitter)
+            </a>
             <span className="contact-location">📍 {cvData.personalInfo.location}</span>
           </div>
         </div>

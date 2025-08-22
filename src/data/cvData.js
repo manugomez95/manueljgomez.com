@@ -4,6 +4,8 @@ export const cvData = {
     title: "XR Software Engineer", 
     email: "manugomez@proton.me",
     location: "Madrid, Spain",
+    linkedin: "https://linkedin.com/in/manueljgomez",
+    twitter: "https://x.com/manueljgomez",
     about: "Passionate XR Software Engineer with expertise in developing immersive experiences using Unity, Unreal Engine, and WebXR. Specializing in spatial computing, gesture recognition, and optimizing 3D rendering for VR/AR applications. Committed to pushing the boundaries of human-computer interaction through innovative mixed reality solutions."
   },
   achievements: [
