@@ -231,6 +231,7 @@ section {
 /* Projects Section */
 .projects {
   background-color: var(--bg-secondary);
+  padding: 6rem 0;
 }
 
 .projects-grid {
@@ -270,21 +271,23 @@ section {
   transform: scale(1.05);
 }
 
-.project-content {
+.project-info {
   padding: 1.5rem;
 }
 
-.project-title {
+.project-card h3 {
   font-size: 1.25rem;
   margin-bottom: 0.75rem;
+  margin-top: 0;
+  color: var(--text-primary);
 }
 
-.project-description {
+.project-card p {
   margin-bottom: 1rem;
   color: var(--text-secondary);
 }
 
-.project-tech {
+.project-technologies {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
