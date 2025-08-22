@@ -1,0 +1,10 @@
+{
+  "id": "dinopolis",
+  "title": "Dinopolis",
+  "description": "Interactive AR museum experience with dinosaur card collection, AR visualizations, and educational minigames developed for Dinopolis in Teruel, Spain.",
+  "technologies": ["Augmented Reality", "Android", "iOS", "Unity", "ARFoundation"],
+  "link": "https://play.google.com/store/apps/details?id=com.Dinopolis.Dinopolis&hl=es&pli=1",
+  "imageUrl": "/images/projects/dinopolis.png"
+}
+
+

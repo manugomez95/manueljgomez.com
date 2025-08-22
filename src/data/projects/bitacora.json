@@ -1,0 +1,9 @@
+{
+  "id": "bitacora",
+  "title": "Bitacora",
+  "description": "Multi-database client made with Flutter",
+  "technologies": ["Flutter"],
+  "imageUrl": "/images/projects/bitacora.png"
+}
+
+

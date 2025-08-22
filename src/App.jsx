@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { cvData } from './data/cvData';
+import { useProjects } from './hooks/useProjects';
 
 // Theme hook
 function useTheme() {
@@ -57,22 +58,26 @@ function Hero() {
 }
 
 function Projects() {
+  const { visible, hasMore, loadMore } = useProjects({ pageSize: 6, sortBy: 'title', sortDirection: 'asc' });
+
   return (
     <section id="projects" className="projects">
       <div className="container">
         <h2 className="section-title">Featured Projects</h2>
         <div className="projects-grid">
-          {cvData.projects.slice(0, 4).map((project, index) => (
-            <div key={index} className="project-card">
-              <div className="project-image">
-                <img src={project.imageUrl} alt={project.title} />
-              </div>
+          {visible.map((project) => (
+            <div key={project.id} className="project-card">
+              {project.imageUrl && (
+                <div className="project-image">
+                  <img src={project.imageUrl} alt={project.title} loading="lazy" />
+                </div>
+              )}
               <div className="project-info">
                 <h3>{project.title}</h3>
                 <p>{project.description}</p>
                 <div className="project-technologies">
-                  {project.technologies.map((tech, index) => (
-                    <span key={index} className="tech-tag">{tech}</span>
+                  {project.technologies?.map((tech, techIndex) => (
+                    <span key={techIndex} className="tech-tag">{tech}</span>
                   ))}
                 </div>
                 {project.link && (
@@ -84,6 +89,11 @@ function Projects() {
             </div>
           ))}
         </div>
+        {hasMore && (
+          <div className="projects-actions" style={{ textAlign: 'center', marginTop: '2rem' }}>
+            <button className="btn btn-secondary" onClick={loadMore}>Load more</button>
+          </div>
+        )}
       </div>
     </section>
   );
