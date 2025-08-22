@@ -1,0 +1,10 @@
+{
+  "id": "doom-party",
+  "title": "Doom Party",
+  "description": "YouTube video about AI risk, created collaboratively with AI.",
+  "technologies": ["AI", "Video"],
+  "link": "https://www.youtube.com/watch?v=GRl9z7ReN1g",
+  "imageUrl": "/images/projects/doom-party.png"
+}
+
+
