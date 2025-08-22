@@ -27,7 +27,7 @@ function Header() {
         <div className="nav">
           <h1 className="logo">{cvData.personalInfo.name}</h1>
           <nav className="nav-links">
-            <a href="#about">About</a>
+            <a href="#hero">About</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
             <button className="theme-toggle" onClick={toggleTheme}>
@@ -42,7 +42,7 @@ function Header() {
 
 function Hero() {
   return (
-    <section className="hero">
+    <section id="hero" className="hero">
       <div className="container">
         <h1 className="hero-title">{cvData.personalInfo.name}</h1>
         <p className="hero-subtitle">{cvData.personalInfo.title}</p>
@@ -98,29 +98,24 @@ function Projects() {
 
 function About() {
   return (
-    <section id="about" className="about">
+    <section id="skills" className="about">
       <div className="container">
-        <h2 className="section-title">About Me</h2>
-        <div className="about-content">
-          <div className="about-text">
-            <p className="about-description">{cvData.personalInfo.about}</p>
-          </div>
-          <div className="about-grid">
-            <div className="skills-section">
-              <h3>Technologies</h3>
-              <div className="skills-list">
-                {cvData.skills.map((skill, index) => (
-                  <span key={index} className="skill-tag">{skill}</span>
-                ))}
-              </div>
+        <h2 className="section-title">Skills & Experience</h2>
+        <div className="about-grid">
+          <div className="skills-section">
+            <h3>Technologies</h3>
+            <div className="skills-list">
+              {cvData.skills.map((skill, index) => (
+                <span key={index} className="skill-tag">{skill}</span>
+              ))}
             </div>
-            <div className="languages-section">
-              <h3>Languages</h3>
-              <div className="skills-list">
-                {cvData.languages.map((language, index) => (
-                  <span key={index} className="skill-tag">{language}</span>
-                ))}
-              </div>
+          </div>
+          <div className="languages-section">
+            <h3>Languages</h3>
+            <div className="skills-list">
+              {cvData.languages.map((language, index) => (
+                <span key={index} className="skill-tag">{language}</span>
+              ))}
             </div>
           </div>
         </div>
