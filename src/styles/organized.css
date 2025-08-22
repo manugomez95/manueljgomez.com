@@ -58,8 +58,7 @@
   margin-top: var(--organized-gap);
 }
 
-/* Experience and Education cards */
-.organized .experience-card,
+/* Education cards */
 .organized .education-card {
   margin: 0;
   border-radius: 0;
@@ -69,14 +68,12 @@
   padding-bottom: var(--organized-gap);
 }
 
-.organized .experience-card:last-child,
 .organized .education-card:last-child {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
 }
 
-.organized .experience-card:first-of-type,
 .organized .education-card:first-of-type {
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
@@ -130,33 +127,7 @@
   color: var(--secondary-color);
 }
 
-/* Skills section */
-.organized .skills-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: calc(var(--paper-width) * 0.008);
-}
 
-.organized .skill-item {
-  font-size: var(--font-xs);
-  padding: calc(var(--paper-width) * 0.008) calc(var(--paper-width) * 0.016);
-  margin: calc(var(--paper-width) * 0.005);
-  border-radius: calc(var(--paper-width) * 0.01);
-}
-
-/* Languages section */
-.organized .languages-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: calc(var(--paper-width) * 0.008);
-}
-
-.organized .language-item {
-  font-size: var(--font-xs);
-  padding: calc(var(--paper-width) * 0.008) calc(var(--paper-width) * 0.016);
-  margin: calc(var(--paper-width) * 0.005);
-  border-radius: calc(var(--paper-width) * 0.01);
-}
 
 /* Typography */
 .organized h1 {

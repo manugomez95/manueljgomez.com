@@ -62,28 +62,21 @@ function Projects() {
       <div className="container">
         <h2 className="section-title">Featured Projects</h2>
         <div className="projects-grid">
-          {cvData.projects.map((project, index) => (
+          {cvData.projects.slice(0, 4).map((project, index) => (
             <div key={index} className="project-card">
-              {project.imageUrl && (
-                <div className="project-image">
-                  <img src={project.imageUrl} alt={project.title} loading="lazy" />
-                </div>
-              )}
-              <div className="project-content">
-                <h3 className="project-title">{project.title}</h3>
-                <p className="project-description">{project.description}</p>
-                <div className="project-tech">
-                  {project.technologies.map((tech, techIndex) => (
-                    <span key={techIndex} className="tech-tag">{tech}</span>
+              <div className="project-image">
+                <img src={project.imageUrl} alt={project.title} />
+              </div>
+              <div className="project-info">
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+                <div className="project-technologies">
+                  {project.technologies.map((tech, index) => (
+                    <span key={index} className="tech-tag">{tech}</span>
                   ))}
                 </div>
                 {project.link && (
-                  <a 
-                    href={project.link} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="project-link"
-                  >
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link">
                     View Project →
                   </a>
                 )}
@@ -96,39 +89,11 @@ function Projects() {
   );
 }
 
-function About() {
-  return (
-    <section id="skills" className="about">
-      <div className="container">
-        <h2 className="section-title">Skills & Experience</h2>
-        <div className="about-grid">
-          <div className="skills-section">
-            <h3>Technologies</h3>
-            <div className="skills-list">
-              {cvData.skills.map((skill, index) => (
-                <span key={index} className="skill-tag">{skill}</span>
-              ))}
-            </div>
-          </div>
-          <div className="languages-section">
-            <h3>Languages</h3>
-            <div className="skills-list">
-              {cvData.languages.map((language, index) => (
-                <span key={index} className="skill-tag">{language}</span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function Contact() {
   return (
     <section id="contact" className="contact">
       <div className="container">
-        <h2 className="section-title">Let's Connect</h2>
+        <h2 className="section-title">Let&apos;s Connect</h2>
         <div className="contact-content">
           <p>Interested in working together or have a question?</p>
           <div className="contact-info">
@@ -150,7 +115,6 @@ function App() {
       <main>
         <Hero />
         <Projects />
-        <About />
         <Contact />
       </main>
     </div>

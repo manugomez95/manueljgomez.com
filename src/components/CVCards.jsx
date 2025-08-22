@@ -131,39 +131,12 @@ const BaseInfoCard = ({ className, title, subtitle, period, description, project
   </BaseCard>
 );
 
-export const ExperienceCard = ({ position, company, ...rest }) => (
-  <BaseInfoCard
-    className="experience-card"
-    title={position}
-    subtitle={company}
-    {...rest}
-  />
-);
-
 export const EducationCard = ({ degree, institution, ...rest }) => (
   <BaseInfoCard
     className="education-card"
     title={degree}
     subtitle={institution}
     {...rest}
-  />
-);
-
-export const SkillsCard = ({ skills }) => (
-  <ListCard
-    className="skills-card"
-    title="Skills"
-    items={skills}
-    itemClassName="skill-item"
-  />
-);
-
-export const LanguagesCard = ({ languages }) => (
-  <ListCard
-    className="languages-card"
-    title="Languages"
-    items={languages}
-    itemClassName="language-item"
   />
 );
 
@@ -221,17 +194,6 @@ AboutCard.propTypes = {
   about: PropTypes.string.isRequired
 };
 
-ExperienceCard.propTypes = {
-  position: PropTypes.string.isRequired,
-  company: PropTypes.string.isRequired,
-  period: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  projects: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    link: PropTypes.string.isRequired
-  }))
-};
-
 EducationCard.propTypes = {
   degree: PropTypes.string.isRequired,
   institution: PropTypes.string.isRequired,
@@ -241,14 +203,6 @@ EducationCard.propTypes = {
     title: PropTypes.string.isRequired,
     link: PropTypes.string.isRequired
   }))
-};
-
-SkillsCard.propTypes = {
-  skills: PropTypes.arrayOf(PropTypes.string).isRequired
-};
-
-LanguagesCard.propTypes = {
-  languages: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 ProjectCard.propTypes = {
