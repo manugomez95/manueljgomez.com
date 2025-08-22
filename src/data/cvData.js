@@ -20,26 +20,6 @@ export const cvData = {
       relatedProject: "Dinopolis"
     }
   ],
-  experience: [
-    {
-      company: "Acciona",
-      position: "XR Software Engineer",
-      period: "Nov 2022 - Present",
-      description: "Key responsibilities and achievements"
-    },
-    {
-      company: "Optiva Media",
-      position: "XR Software Engineer",
-      period: "Feb 2022 - Nov 2022",
-      description: "Key responsibilities and achievements"
-    },
-    {
-      company: "Amazon",
-      position: "Software Development Engineer",
-      period: "Sep 2020 - Aug 2021",
-      description: "Key responsibilities and achievements"
-    }
-  ],
   education: [
     {
       institution: "U-Tad",
@@ -53,16 +33,6 @@ export const cvData = {
       period: "2014 - 2018",
       description: "Relevant coursework and achievements"
     }
-  ],
-  skills: [
-    "C#",
-    "Unity",
-    "AR/VR"
-  ],
-  languages: [
-    "Spanish (Native)",
-    "English (Fluent)",
-    "French (Basic)"
   ],
   projects: [
     {

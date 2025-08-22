@@ -59,7 +59,6 @@ export function MetabaseDashboard() {
               height: '100%',
               border: 'none'
             }}
-            allowtransparency="true"
             sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
             referrerPolicy="origin"
             loading="lazy"

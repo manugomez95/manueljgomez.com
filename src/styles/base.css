@@ -23,22 +23,6 @@ body {
   gap: 2rem;
 }
 
-.skills-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: flex-start;
-}
-
-.skill-item {
-  background-color: var(--light-gray);
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  color: var(--primary-color);
-  border: 1px solid var(--primary-color);
-}
-
 /* Common typography */
 h3 {
   color: var(--primary-color);
