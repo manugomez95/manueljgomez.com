@@ -27,7 +27,7 @@ function Header() {
         <div className="nav">
           <h1 className="logo">{cvData.personalInfo.name}</h1>
           <nav className="nav-links">
-            <a href="#about">About</a>
+            <a href="#hero">About</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
             <button className="theme-toggle" onClick={toggleTheme}>
@@ -42,7 +42,7 @@ function Header() {
 
 function Hero() {
   return (
-    <section className="hero">
+    <section id="hero" className="hero">
       <div className="container">
         <h1 className="hero-title">{cvData.personalInfo.name}</h1>
         <p className="hero-subtitle">{cvData.personalInfo.title}</p>
@@ -98,7 +98,7 @@ function Projects() {
 
 function About() {
   return (
-    <section id="about" className="about">
+    <section id="skills" className="about">
       <div className="container">
         <h2 className="section-title">Skills & Experience</h2>
         <div className="about-grid">
