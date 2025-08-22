@@ -100,22 +100,27 @@ function About() {
   return (
     <section id="about" className="about">
       <div className="container">
-        <h2 className="section-title">Skills & Experience</h2>
-        <div className="about-grid">
-          <div className="skills-section">
-            <h3>Technologies</h3>
-            <div className="skills-list">
-              {cvData.skills.map((skill, index) => (
-                <span key={index} className="skill-tag">{skill}</span>
-              ))}
-            </div>
+        <h2 className="section-title">About Me</h2>
+        <div className="about-content">
+          <div className="about-text">
+            <p className="about-description">{cvData.personalInfo.about}</p>
           </div>
-          <div className="languages-section">
-            <h3>Languages</h3>
-            <div className="skills-list">
-              {cvData.languages.map((language, index) => (
-                <span key={index} className="skill-tag">{language}</span>
-              ))}
+          <div className="about-grid">
+            <div className="skills-section">
+              <h3>Technologies</h3>
+              <div className="skills-list">
+                {cvData.skills.map((skill, index) => (
+                  <span key={index} className="skill-tag">{skill}</span>
+                ))}
+              </div>
+            </div>
+            <div className="languages-section">
+              <h3>Languages</h3>
+              <div className="skills-list">
+                {cvData.languages.map((language, index) => (
+                  <span key={index} className="skill-tag">{language}</span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
