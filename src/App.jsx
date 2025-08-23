@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
 import { cvData } from './data/cvData';
 import { useProjects } from './hooks/useProjects';
+import ProjectDetail from './components/ProjectDetail.jsx';
 
 // Theme hook
 function useTheme() {
@@ -33,9 +35,9 @@ function Header() {
         <div className="nav">
           <h1 className="logo">{cvData.personalInfo.name}</h1>
           <nav className="nav-links">
-            <a href="#hero">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
+            <a href="/#hero">About</a>
+            <a href="/#projects">Projects</a>
+            <a href="/#contact">Contact</a>
             <button className="theme-toggle" onClick={toggleTheme}>
               {isDark ? '☀️' : '🌙'}
             </button>
@@ -85,10 +87,16 @@ function Projects() {
                     <span key={techIndex} className="tech-tag">{tech}</span>
                   ))}
                 </div>
-                {project.link && (
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link">
+                {project.hasDetailPage ? (
+                  <Link to={`/projects/${project.slug}`} className="project-link">
                     View Project →
-                  </a>
+                  </Link>
+                ) : (
+                  project.link && (
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link">
+                      View Project →
+                    </a>
+                  )
                 )}
               </div>
             </div>
@@ -134,9 +142,19 @@ function App() {
     <div className="app">
       <Header />
       <main>
-        <Hero />
-        <Projects />
-        <Contact />
+        <Routes>
+          <Route
+            path="/"
+            element={(
+              <>
+                <Hero />
+                <Projects />
+                <Contact />
+              </>
+            )}
+          />
+          <Route path="/projects/:slug" element={<ProjectDetail />} />
+        </Routes>
       </main>
     </div>
   );

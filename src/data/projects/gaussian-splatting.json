@@ -1,0 +1,12 @@
+{
+  "id": "gaussian-splatting-from-ai-video",
+  "slug": "gaussian-splatting-from-ai-video",
+  "title": "Gaussian Splatting from AI video",
+  "description": "Experiment generating a 3D scene using 3D Gaussian Splatting from an AI-generated video.",
+  "longDescription": "A hands-on exploration converting AI-generated video into a 3D Gaussian Splat representation. Covers data extraction, camera path estimation, and training splat parameters to reconstruct a view-consistent scene. Includes notes on quality tradeoffs, dataset prep, and rendering results.",
+  "technologies": ["3D Gaussian Splatting", "Computer Vision", "Python", "COLMAP", "FFmpeg"],
+  "imageUrl": "/images/projects/gaussian-splatting.png",
+  "hasDetailPage": true
+}
+
+
