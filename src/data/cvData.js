@@ -6,7 +6,7 @@ export const cvData = {
     location: "Madrid, Spain",
     linkedin: "https://www.linkedin.com/in/manujgomez/",
     twitter: "https://x.com/manujgomez95",
-    about: "Passionate XR Software Engineer with expertise in developing immersive experiences using Unity, Unreal Engine, and WebXR. Specializing in spatial computing, gesture recognition, and optimizing 3D rendering for VR/AR applications. Committed to pushing the boundaries of human-computer interaction through innovative mixed reality solutions."
+    about: "I'm a Software Engineer with a focus on AR/VR for the last ~6 years. I feel comfortable building scalable, robust or technically challenging solutions and supporting the team with tools, processes and good practices to build complex stuff in a sustainable way. Lately I'm obsessed with the Gen AI wave and use Claude Code and Cursor all the time."
   },
   achievements: [
     {
