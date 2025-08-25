@@ -303,6 +303,12 @@ section {
   font-weight: 500;
 }
 
+/* Dark mode tech tag improvement */
+[data-theme="dark"] .tech-tag {
+  background-color: #000000;
+  color: #ffffff;
+}
+
 .project-link {
   color: var(--accent);
   font-weight: 600;
