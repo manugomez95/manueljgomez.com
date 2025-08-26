@@ -115,22 +115,34 @@ a:hover {
 /* Language switcher styles */
 .language-toggle {
   background: none;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
+  border: 1px solid var(--border);
+  border-radius: 8px;
   padding: 0.5rem;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+  cursor: pointer;
+  font-size: 1.25rem;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
   margin-right: 0.5rem;
 }
 
 .language-toggle:hover {
-  background-color: var(--primary-color-10);
+  background-color: var(--bg-secondary);
+  transform: translateY(-1px);
 }
 
 .language-toggle:focus {
-  outline: 2px solid var(--primary-color);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
+}
+
+/* Ensure flag emojis are clearly visible in dark mode */
+[data-theme="dark"] .language-toggle {
+  border-color: var(--border);
+  filter: contrast(1.1) brightness(1.1);
 }
 
 /* Update navigation to handle the new button */
