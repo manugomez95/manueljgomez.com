@@ -8,13 +8,19 @@ const LanguageSwitcher = () => {
     i18n.changeLanguage(newLang);
   };
 
+  const getCurrentLanguageDisplay = () => {
+    return i18n.language === 'en' ? 'ES' : 'EN';
+  };
+
   return (
     <button 
       className="language-toggle" 
       onClick={toggleLanguage}
       title={`Switch to ${i18n.language === 'en' ? 'Spanish' : 'English'}`}
     >
-      {i18n.language === 'en' ? '🇪🇸' : '🇺🇸'}
+      <span className="language-text">
+        {getCurrentLanguageDisplay()}
+      </span>
     </button>
   );
 };
