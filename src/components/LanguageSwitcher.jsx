@@ -14,9 +14,7 @@ const LanguageSwitcher = () => {
       onClick={toggleLanguage}
       title={`Switch to ${i18n.language === 'en' ? 'Spanish' : 'English'}`}
     >
-      <span className="flag-emoji">
-        {i18n.language === 'en' ? '🇪🇸' : '🇺🇸'}
-      </span>
+      {i18n.language === 'en' ? '🇪🇸' : '🇺🇸'}
     </button>
   );
 };
