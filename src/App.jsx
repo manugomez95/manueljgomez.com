@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { cvData } from './data/cvData';
 import { useProjects } from './hooks/useProjects';
 import ProjectDetail from './components/ProjectDetail.jsx';
+import LanguageSwitcher from './components/LanguageSwitcher.jsx';
 
 // Theme hook
 function useTheme() {
@@ -28,6 +30,7 @@ function useTheme() {
 
 function Header() {
   const { isDark, toggleTheme } = useTheme();
+  const { t } = useTranslation();
   
   return (
     <header className="header">
@@ -35,9 +38,10 @@ function Header() {
         <div className="nav">
           <h1 className="logo">{cvData.personalInfo.name}</h1>
           <nav className="nav-links">
-            <a href="/#hero">About</a>
-            <a href="/#projects">Projects</a>
-            <a href="/#contact">Contact</a>
+            <a href="/#hero">{t('nav.about')}</a>
+            <a href="/#projects">{t('nav.projects')}</a>
+            <a href="/#contact">{t('nav.contact')}</a>
+            <LanguageSwitcher />
             <button className="theme-toggle" onClick={toggleTheme}>
               {isDark ? '☀️' : '🌙'}
             </button>
@@ -49,15 +53,17 @@ function Header() {
 }
 
 function Hero() {
+  const { t } = useTranslation();
+  
   return (
     <section id="hero" className="hero">
       <div className="container">
-        <h1 className="hero-title">{cvData.personalInfo.name}</h1>
-        <p className="hero-subtitle">{cvData.personalInfo.title}</p>
-        <p className="hero-description">{cvData.personalInfo.about}</p>
+        <h1 className="hero-title">{t('hero.title')}</h1>
+        <p className="hero-subtitle">{t('hero.subtitle')}</p>
+        <p className="hero-description">{t('hero.about')}</p>
         <div className="hero-actions">
-          <a href="#projects" className="btn btn-primary">View Projects</a>
-          <a href="#contact" className="btn btn-secondary">Get In Touch</a>
+          <a href="#projects" className="btn btn-primary">{t('hero.viewProjects')}</a>
+          <a href="#contact" className="btn btn-secondary">{t('hero.getInTouch')}</a>
         </div>
       </div>
     </section>
@@ -66,11 +72,12 @@ function Hero() {
 
 function Projects() {
   const { visible, hasMore, loadMore } = useProjects({ pageSize: 6, sortBy: 'title', sortDirection: 'asc' });
+  const { t } = useTranslation();
 
   return (
     <section id="projects" className="projects">
       <div className="container">
-        <h2 className="section-title">Featured Projects</h2>
+        <h2 className="section-title">{t('projects.title')}</h2>
         <div className="projects-grid">
           {visible.map((project) => (
             <div key={project.id} className="project-card">
@@ -113,21 +120,23 @@ function Projects() {
 }
 
 function Contact() {
+  const { t } = useTranslation();
+  
   return (
     <section id="contact" className="contact">
       <div className="container">
-        <h2 className="section-title">Let&apos;s Connect</h2>
+        <h2 className="section-title">{t('contact.title')}</h2>
         <div className="contact-content">
-          <p>Interested in working together or have a question?</p>
+          <p>{t('contact.description')}</p>
           <div className="contact-info">
             <a href={`mailto:${cvData.personalInfo.email}`} className="contact-link">
               📧 {cvData.personalInfo.email}
             </a>
             <a href={cvData.personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="contact-link">
-              💼 LinkedIn
+              💼 {t('contact.linkedin')}
             </a>
             <a href={cvData.personalInfo.twitter} target="_blank" rel="noopener noreferrer" className="contact-link">
-              🐦 X
+              🐦 {t('contact.twitter')}
             </a>
             <span className="contact-location">📍 {cvData.personalInfo.location}</span>
           </div>

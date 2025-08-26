@@ -112,10 +112,32 @@ a:hover {
   margin: 0;
 }
 
+/* Language switcher styles */
+.language-toggle {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  margin-right: 0.5rem;
+}
+
+.language-toggle:hover {
+  background-color: var(--primary-color-10);
+}
+
+.language-toggle:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Update navigation to handle the new button */
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .nav-links a {

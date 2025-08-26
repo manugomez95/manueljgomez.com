@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Manuel Gómez",
+    "subtitle": "XR Software Engineer",
+    "about": "I'm a Software Engineer with a focus on AR/VR for the last ~6 years. I feel comfortable building scalable, robust or technically challenging solutions and supporting the team with tools, processes and good practices to build complex stuff in a sustainable way. Lately I'm obsessed with the Gen AI wave and use Claude Code and Cursor all the time.",
+    "viewProjects": "View Projects",
+    "getInTouch": "Get In Touch"
+  },
+  "projects": {
+    "title": "Featured Projects"
+  },
+  "contact": {
+    "title": "Let's Connect",
+    "description": "Interested in working together or have a question?",
+    "linkedin": "LinkedIn",
+    "twitter": "X"
+  }
+}

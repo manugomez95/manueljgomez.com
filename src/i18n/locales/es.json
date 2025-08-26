@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "about": "Sobre mí",
+    "projects": "Proyectos",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "Manuel Gómez",
+    "subtitle": "Ingeniero de Software XR",
+    "about": "Soy un Ingeniero de Software especializado en AR/VR durante los últimos ~6 años. Me siento cómodo construyendo soluciones escalables, robustas o técnicamente desafiantes y apoyando al equipo con herramientas, procesos y buenas prácticas para construir cosas complejas de manera sostenible. Últimamente estoy obsesionado con la ola de IA Generativa y uso Claude Code y Cursor todo el tiempo.",
+    "viewProjects": "Ver Proyectos",
+    "getInTouch": "Contactar"
+  },
+  "projects": {
+    "title": "Proyectos Destacados"
+  },
+  "contact": {
+    "title": "Conectemos",
+    "description": "¿Interesado en trabajar juntos o tienes alguna pregunta?",
+    "linkedin": "LinkedIn",
+    "twitter": "X"
+  }
+}
