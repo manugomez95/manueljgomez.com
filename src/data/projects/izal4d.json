@@ -1,9 +1,9 @@
 {
   "id": "izal-4d",
   "title": "Izal 4D",
-  "description": "Augmented Reality UI for lower-limb exoskeletons",
+  "description": "Developed a VR experience that puts users on stage at Izal’s farewell concert, combining 360º video, sound, and real effects for an immersive musical event.",
   "technologies": ["Unity", "HoloLens"],
-  "link": "https://www.youtube.com/watch?v=jh0wdRqqqEQ",
+  "link": "https://www.lavanguardia.com/tecnologia/20230227/8782941/on-stage-like-one-of-izal-in-their-farewell-concert-brl.html",
   "imageUrl": "/images/projects/izalVR.webp"
 }
 

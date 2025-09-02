@@ -1,9 +1,9 @@
 {
   "id": "holden",
   "title": "Holden",
-  "description": "Augmented Reality UI for lower-limb exoskeletons",
-  "technologies": ["Unity", "HoloLens"],
-  "link": "https://www.youtube.com/watch?v=jh0wdRqqqEQ",
+  "description": "Final project for my computer science bachelor's degree focused on creating a detection and recognition system to visually monitor elements in online poker games.",
+  "technologies": ["Computer Vision", "OpenCV", "Python"],
+  "link": "https://github.com/manugomez95/Holden",
   "imageUrl": "/images/projects/holden.png"
 }
 
