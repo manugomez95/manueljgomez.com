@@ -1,0 +1,9 @@
+{
+  "id": "personal-analytics",
+  "title": "Personal Analytics",
+  "description": "Tracking personal data like workouts and weight with Metabase",
+  "technologies": ["Metabase", "SQL", "Docker"],
+  "imageUrl": "/images/projects/analytics.png"
+}
+
+

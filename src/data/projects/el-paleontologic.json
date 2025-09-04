@@ -2,7 +2,7 @@
   "id": "el-paleontologic",
   "title": "El Paleontologic",
   "description": "Interactive AR museum experience for El Paleontologic with dinosaur visualizations and on-site interactions.",
-  "technologies": ["Augmented Reality", "Android", "iOS", "Unity", "ARFoundation"],
+  "technologies": ["Augmented Reality", "Android", "iOS", "Unity", "ARFoundation", "Addressables"],
   "link": "https://play.google.com/store/apps/details?id=es.valencia.paleontologic&hl=en-US&ah=5AiPJN6YGJhzcGwu83G9JQ5XEBY&pli=1",
   "imageUrl": "/images/projects/paleontologic.webp"
 }

@@ -2,7 +2,7 @@
   "id": "foosball-arcade",
   "title": "Foosball Arcade",
   "description": "VR game built and published in the Oculus Store with 3k+ downloads.",
-  "technologies": ["Unity"],
+  "technologies": ["Unity", "Oculus Go"],
   "link": "https://www.youtube.com/watch?v=blJ9CK8DEdM",
   "imageUrl": "/images/projects/foosball.png"
 }

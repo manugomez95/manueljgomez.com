@@ -1,9 +1,9 @@
 {
   "id": "bitacora",
   "title": "Bitacora",
-  "description": "Multi-database client made with Flutter",
-  "technologies": ["Flutter"],
-  "imageUrl": "/images/projects/bitacora.png"
+  "description": "Multi-database client made for speedy insertion and AI assisted querying.",
+  "technologies": ["Flutter", "PostgreSQL", "LangChain"],
+  "imageUrl": "/images/projects/bitacora.webp"
 }
 
 
