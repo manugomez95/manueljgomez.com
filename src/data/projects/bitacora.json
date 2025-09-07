@@ -3,7 +3,8 @@
   "title": "Bitacora",
   "description": "Multi-database client made for speedy insertion and AI assisted querying.",
   "technologies": ["Flutter", "PostgreSQL", "LangChain"],
-  "imageUrl": "/images/projects/bitacora.webp"
+  "imageUrl": "/images/projects/bitacora.webp",
+  "link": "https://play.google.com/store/apps/details?id=com.manugo.bitacora"
 }
 
 
