@@ -1,8 +1,10 @@
 :root {
+  /* Light theme colors */
   --primary-color: #1a73e8;
   --secondary-color: #5f6368;
   --text-color: #202124;
   --light-gray: #f8f9fa;
+  --card-background: #ffffff;
   --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   --transition-time: 0.8s;
   --paper-width: min(800px, 90vh / 1.4142);
@@ -20,4 +22,14 @@
   /* Grid layout */
   --left-column-width: 40%;
   --right-column-width: 60%;
+}
+
+/* Dark theme overrides */
+[data-theme="dark"] {
+  --primary-color: #60a5fa;
+  --secondary-color: #d1d5db;
+  --text-color: #ffffff;
+  --light-gray: #374151;
+  --card-background: #1a1a1a;
+  --shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 } 
