@@ -39,7 +39,7 @@
   --border: #374151;
   --accent: #60a5fa;
   --accent-hover: #3b82f6;
-  --card-bg: #1a1a1a;
+  --card-bg: #0a0a0a;
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.2);
 }
@@ -306,8 +306,21 @@ section {
 
 /* Dark mode tech tag improvement */
 [data-theme="dark"] .tech-tag {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: rgba(96, 165, 250, 0.2);
+  color: #e0f2fe;
+  border: 1px solid rgba(96, 165, 250, 0.3);
+}
+
+/* Enhanced dark theme project card styling */
+[data-theme="dark"] .project-card {
+  border: 1px solid #333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] .project-card:hover {
+  border: 1px solid #444;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+  transform: translateY(-4px);
 }
 
 .project-link {

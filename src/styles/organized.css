@@ -2,8 +2,8 @@
 .cv-container.organized {
   width: var(--paper-width);
   height: var(--paper-height);
-  background: white;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+  background: var(--card-background);
+  box-shadow: var(--shadow);
   border-radius: 8px;
   position: relative;
   overflow: auto;

@@ -127,6 +127,14 @@
   border-radius: 15px;
   font-size: 0.875rem;
   color: white;
+  transition: all 0.3s ease;
+}
+
+/* Improve background tech items in dark theme */
+[data-theme="dark"] .background-tech-item {
+  background: rgba(96, 165, 250, 0.4);
+  color: #e0f2fe;
+  border: 1px solid rgba(96, 165, 250, 0.3);
 }
 
 /* Name styles */
@@ -166,10 +174,10 @@
 /* Card content styles */
 .floating-card {
   position: relative;
-  background: white;
+  background: var(--card-background);
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
   width: 100%;
   min-height: 120px;
   color: var(--text-color);
@@ -179,6 +187,17 @@
 
 .floating-card:hover {
   opacity: 1;
+}
+
+/* Enhanced dark theme floating card styling */
+[data-theme="dark"] .floating-card {
+  border: 1px solid #333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] .floating-card:hover {
+  border: 1px solid #444;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
 }
 
 .floating-card h3,
@@ -198,12 +217,13 @@
 
 /* Project card specific styles */
 .project-card {
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--card-background);
   backdrop-filter: blur(10px);
   border-radius: 15px;
   padding: 1.5rem;
   width: 100%;
   color: var(--text-color);
+  opacity: 0.95;
 }
 
 .project-card h4 {
@@ -225,12 +245,20 @@
   border-radius: 15px;
   font-size: 0.875rem;
   color: var(--primary-color);
+  transition: all 0.3s ease;
 }
 
 /* Dark mode tech item improvement for better contrast */
 [data-theme="dark"] .tech-item {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(96, 165, 250, 0.25);
+  color: #e0f2fe;
+  border: 1px solid rgba(96, 165, 250, 0.4);
+}
+
+[data-theme="dark"] .tech-item:hover {
+  background: rgba(96, 165, 250, 0.35);
   color: #ffffff;
+  transform: translateY(-1px);
 }
 
 .project-link {
