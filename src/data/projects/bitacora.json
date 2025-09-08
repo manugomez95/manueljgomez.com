@@ -1,8 +1,8 @@
 {
   "id": "bitacora",
   "title": "Bitacora",
-  "description": "Multi-database client made for speedy insertion and AI assisted querying.",
-  "technologies": ["Flutter", "PostgreSQL", "LangChain"],
+  "description": "Personal project I built to track anything (I use it for journal entries and workouts mainly). It's a database client with a UX specially designed for speedy insertion on mobile. Working on adding AI assisted querying.",
+  "technologies": ["Android", "Flutter", "PostgreSQL", "LangChain"],
   "imageUrl": "/images/projects/bitacora.webp",
   "link": "https://play.google.com/store/apps/details?id=com.manugo.bitacora"
 }

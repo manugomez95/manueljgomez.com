@@ -2,7 +2,7 @@
   "id": "holobrain",
   "title": "HoloBrain",
   "description": "Innovative VR note taking app made with Adrián Botana for Meta's Presence Platform Hackathon 2024.",
-  "technologies": ["Unity", "Meta Spatial SDK"],
+  "technologies": ["VR", "Unity", "Meta Spatial SDK"],
   "link": "https://www.youtube.com/shorts/6wJSK002Hik",
   "imageUrl": "/images/projects/holobrain.png"
 }

@@ -35,63 +35,6 @@ export const cvData = {
       period: "2014 - 2018",
       description: "Relevant coursework and achievements"
     }
-  ],
-  projects: [
-    {
-      title: "Zodiac's AR Pool Tool",
-      description: "Android AR app for pool modeling and robot cycle estimation. Features ARCore scanning, BLE connectivity, and 3D visualization with Sceneform.",
-      technologies: ["Android", "Kotlin", "ARCore", "Sceneform", "Bluetooth LE"],
-      imageUrl: "/images/projects/zodiac.jpg"
-    },
-    {
-      title: "Dinopolis",
-      description: "Interactive AR museum experience with dinosaur card collection, AR visualizations, and educational minigames developed for Dinopolis in Teruel, Spain.",
-      technologies: ["Augmented Reality", "Android", "iOS", "Unity", "ARFoundation"],
-      link: "https://play.google.com/store/apps/details?id=com.Dinopolis.Dinopolis&hl=es&pli=1",
-      relatedExperience: "Acciona",
-      imageUrl: "/images/projects/dinopolis.png"
-    },
-    {
-      title: "Foosball Arcade",
-      description: "VR game built and published in the Oculus Store with 3k+ downloads.",
-      technologies: ["Unity"],
-      link: "https://www.youtube.com/watch?v=blJ9CK8DEdM",
-      imageUrl: "/images/projects/foosball.png"
-    },
-    {
-      title: "HoloBrain",
-      description: "VR note taking app.",
-      technologies: ["Unity"],
-      link: "https://www.youtube.com/shorts/6wJSK002Hik",
-      imageUrl: "/images/projects/holobrain.png"
-    },
-    {
-      title: "Bitacora",
-      description: "Multi-database client made with Flutter",
-      technologies: ["Flutter"],
-      imageUrl: "/images/projects/bitacora.png"
-    },
-    {
-      title: "Holden",
-      description: "Augmented Reality UI for lower-limb exoskeletons",
-      technologies: ["Unity", "HoloLens"],
-      link: "https://www.youtube.com/watch?v=jh0wdRqqqEQ",
-      imageUrl: "/images/projects/holden.png"
-    },
-    {
-      title: "Master's Final Project: AR UI for lower-limb exoskeletons",
-      description: "Augmented Reality UI for lower-limb exoskeletons",
-      technologies: ["Unity", "HoloLens"],
-      link: "https://www.youtube.com/watch?v=jh0wdRqqqEQ",
-      imageUrl: "/images/projects/exo.png"
-    },
-    {
-      title: "Izal 4D",
-      description: "Augmented Reality UI for lower-limb exoskeletons",
-      technologies: ["Unity", "HoloLens"],
-      link: "https://www.youtube.com/watch?v=jh0wdRqqqEQ",
-      imageUrl: "/images/projects/izalVR.webp"
-    }
   ]
 };
 
