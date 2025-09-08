@@ -1,6 +1,7 @@
 {
   "id": "doom-party",
   "title": "Doom Party",
+  "year": "2024",
   "description": "Musical videoclip about AI risk... made with AI.",
   "technologies": ["AI", "DaVinci Resolve", "Suno"],
   "link": "https://www.youtube.com/watch?v=GRl9z7ReN1g",

@@ -32,6 +32,7 @@ export const BackgroundGrid = ({ projects }) => {
             {indices.useProject && (
               <>
                 <h4>{project.title}</h4>
+                {project.year && <p className="background-year">{project.year}</p>}
                 <p>{project.description}</p>
                 <div className="background-technologies">
                   {project.technologies.map((tech, techIndex) => (
@@ -140,9 +141,10 @@ export const EducationCard = ({ degree, institution, ...rest }) => (
   />
 );
 
-export const ProjectCard = ({ title, description, technologies, link }) => (
+export const ProjectCard = ({ title, year, description, technologies, link }) => (
   <BaseCard className="project-card">
     <h4>{title}</h4>
+    {year && <p className="project-year">{year}</p>}
     <p>{description}</p>
     <div className="project-technologies">
       {technologies.map((tech, index) => (

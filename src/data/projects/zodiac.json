@@ -1,6 +1,7 @@
 {
   "id": "zodiac-ar-pool-tool",
   "title": "Zodiac's AR Pool Tool",
+  "year": "2020",
   "description": "Android AR app for pool modeling and robot cycle estimation. Features ARCore scanning, BLE connectivity, and 3D visualization with Sceneform.",
   "technologies": ["AR", "Android", "Kotlin", "ARCore", "Sceneform", "Bluetooth LE"],
   "imageUrl": "/images/projects/zodiac.jpg"

@@ -288,6 +288,24 @@ section {
   color: var(--text-secondary);
 }
 
+.project-year {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.5rem !important;
+  margin-top: 0.25rem;
+  opacity: 0.6;
+}
+
+.background-year {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.5rem !important;
+  margin-top: 0.25rem;
+  opacity: 0.5;
+}
+
 .project-technologies {
   display: flex;
   flex-wrap: wrap;

@@ -81,6 +81,7 @@ function Projects() {
               )}
               <div className="project-info">
                 <h3>{project.title}</h3>
+                {project.year && <p className="project-year">{project.year}</p>}
                 <p>{project.description}</p>
                 <div className="project-technologies">
                   {project.technologies?.map((tech, techIndex) => (

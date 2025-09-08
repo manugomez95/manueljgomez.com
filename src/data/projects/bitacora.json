@@ -1,6 +1,7 @@
 {
   "id": "bitacora",
   "title": "Bitacora",
+  "year": "2024 - Present",
   "description": "Personal project I built to track anything (I use it for journal entries and workouts mainly). It's a database client with a UX specially designed for speedy insertion on mobile. Working on adding AI assisted querying.",
   "technologies": ["Android", "Flutter", "PostgreSQL", "LangChain"],
   "imageUrl": "/images/projects/bitacora.webp",
