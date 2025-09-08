@@ -294,6 +294,7 @@ section {
   color: var(--accent);
   margin-bottom: 0.5rem !important;
   margin-top: 0.25rem;
+  opacity: 0.6;
 }
 
 .background-year {
@@ -302,7 +303,7 @@ section {
   color: var(--accent);
   margin-bottom: 0.5rem !important;
   margin-top: 0.25rem;
-  opacity: 0.8;
+  opacity: 0.5;
 }
 
 .project-technologies {
