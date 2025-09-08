@@ -1,6 +1,7 @@
 {
   "id": "acciona-metaverse",
   "title": "Acciona's Metaverse",
+  "year": "2021 - Present",
   "description": "Immersive social platform connected to Acciona's employee directory with +40 downloadable experiences across multiple business branches (energy, infrastructure, water, living & culture) including trainings, virtual tours and digital twins.",
   "technologies": ["VR", "Unity", "Networking", "Addressables"],
   "imageUrl": "/images/projects/acciona-metaverse.png"

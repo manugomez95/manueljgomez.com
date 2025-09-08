@@ -1,6 +1,7 @@
 {
   "id": "holden",
   "title": "Holden",
+  "year": "2020",
   "description": "Final project for my computer science bachelor's degree focused on creating a detection and recognition system to visually monitor elements in online poker games.",
   "technologies": ["Computer Vision", "OpenCV", "Python"],
   "link": "https://github.com/manugomez95/Holden",
