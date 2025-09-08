@@ -1,7 +1,7 @@
 {
   "id": "foosball-arcade",
   "title": "Foosball Arcade",
-  "description": "Possibly the first and only 3DoF foosball game ever to exist! I made it for the OG (Oculus Go) VR headset. Published in the Oculus Store and got 3k+ downloads.",
+  "description": "First and only 3DoF foosball game to ever exist! I made it for the OG (Oculus Go) VR headset. Got 3K+ downloads on the Oculus Store.",
   "technologies": ["VR", "Unity", "Oculus Go"],
   "link": "https://www.youtube.com/watch?v=blJ9CK8DEdM",
   "imageUrl": "/images/projects/foosball.png"
