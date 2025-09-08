@@ -29,7 +29,7 @@
   --primary-color: #60a5fa;
   --secondary-color: #d1d5db;
   --text-color: #ffffff;
-  --light-gray: #374151;
-  --card-background: #1a1a1a;
-  --shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --light-gray: #0f0f0f;
+  --card-background: #0a0a0a;
+  --shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 } 

@@ -8,6 +8,11 @@ body {
   transition: background-color 0.3s ease;
 }
 
+/* Ensure good contrast for dark theme body */
+[data-theme="dark"] body {
+  background-color: var(--light-gray);
+}
+
 #root {
   width: 100vw;
   height: 100vh;

@@ -132,9 +132,9 @@
 
 /* Improve background tech items in dark theme */
 [data-theme="dark"] .background-tech-item {
-  background: rgba(96, 165, 250, 0.3);
+  background: rgba(96, 165, 250, 0.4);
   color: #e0f2fe;
-  border: 1px solid rgba(96, 165, 250, 0.2);
+  border: 1px solid rgba(96, 165, 250, 0.3);
 }
 
 /* Name styles */
@@ -189,6 +189,17 @@
   opacity: 1;
 }
 
+/* Enhanced dark theme floating card styling */
+[data-theme="dark"] .floating-card {
+  border: 1px solid #333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] .floating-card:hover {
+  border: 1px solid #444;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+}
+
 .floating-card h3,
 .floating-card h4 {
   color: var(--primary-color);
@@ -239,14 +250,15 @@
 
 /* Dark mode tech item improvement for better contrast */
 [data-theme="dark"] .tech-item {
-  background: rgba(96, 165, 250, 0.2);
+  background: rgba(96, 165, 250, 0.25);
   color: #e0f2fe;
-  border: 1px solid rgba(96, 165, 250, 0.3);
+  border: 1px solid rgba(96, 165, 250, 0.4);
 }
 
 [data-theme="dark"] .tech-item:hover {
-  background: rgba(96, 165, 250, 0.3);
+  background: rgba(96, 165, 250, 0.35);
   color: #ffffff;
+  transform: translateY(-1px);
 }
 
 .project-link {
