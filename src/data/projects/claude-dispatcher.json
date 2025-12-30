@@ -5,5 +5,5 @@
   "description": "Automated system that dispatches Linear tasks to Claude via Slack, enabling AI-powered task handling and workflow automation.",
   "technologies": ["Claude API", "Linear", "Slack", "Python"],
   "link": "https://github.com/manugomez95/claude-dispatcher",
-  "imageUrl": "/images/projects/claude-dispatcher.png"
+  "imageUrl": "https://opengraph.githubassets.com/1/manugomez95/claude-dispatcher"
 }
