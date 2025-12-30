@@ -65,7 +65,7 @@ function Hero() {
 }
 
 function Projects() {
-  const { visible, hasMore, loadMore } = useProjects({ pageSize: 6, sortBy: 'title', sortDirection: 'asc' });
+  const { visible, hasMore, loadMore } = useProjects({ pageSize: 6, sortBy: 'year', sortDirection: 'desc' });
 
   return (
     <section id="projects" className="projects">

@@ -4,7 +4,7 @@ import { useProjects } from '../hooks/useProjects';
 
 function ProjectDetail() {
   const { slug } = useParams();
-  const { projects } = useProjects({ sortBy: 'title', sortDirection: 'asc' });
+  const { projects } = useProjects({ sortBy: 'year', sortDirection: 'desc' });
 
   const project = useMemo(() => projects.find(p => p.slug === slug || p.id === slug), [projects, slug]);
 
