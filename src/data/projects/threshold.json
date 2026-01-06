@@ -1,0 +1,9 @@
+{
+  "id": "threshold",
+  "title": "Threshold",
+  "year": "2025",
+  "description": "A Reigns-style card game where you play as the US President navigating AI policy. Balance competing interests, make impossible choices, and try not to accidentally cause the apocalypse.",
+  "technologies": ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
+  "link": "https://thethreshold.netlify.app/",
+  "imageUrl": "/images/projects/threshold.png"
+}

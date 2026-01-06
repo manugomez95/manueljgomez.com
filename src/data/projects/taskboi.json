@@ -1,0 +1,9 @@
+{
+  "id": "taskboi",
+  "title": "Taskboi",
+  "year": "2026",
+  "description": "Cross-platform task management app with AI assistant integration via MCP. Features real-time sync, recurring tasks, and control from Claude via natural language.",
+  "technologies": ["Flutter", "Supabase", "MCP"],
+  "link": "https://taskboi.netlify.app",
+  "imageUrl": "/images/projects/taskboi.png"
+}
