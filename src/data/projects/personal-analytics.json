@@ -4,6 +4,7 @@
   "year": "2023 - Present",
   "description": "Tracking personal data like workouts and weight with Metabase",
   "technologies": ["Metabase", "SQL", "Docker"],
+  "link": "https://medium.com/@manuelgomez611/my-approach-to-personal-analytics-e5252147932b",
   "imageUrl": "/images/projects/analytics.png"
 }
 
