@@ -1,11 +1,29 @@
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+# Dependabot configuration
+# Docs: https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+#
+# Security fixes (e.g. the vite/esbuild CVEs) are opened automatically by
+# "Dependabot security updates" — enable that toggle in
+# Settings -> Code security. The config below adds proactive weekly version
+# bumps so dependencies stay current before they turn into alerts.
 
 version: 2
 updates:
-  - package-ecosystem: "" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  # JavaScript / npm dependencies (package.json + package-lock.json)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    groups:
+      # Bundle routine minor/patch bumps into a single PR to cut noise.
+      # Major bumps and security fixes still open as their own PRs.
+      minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
+
+  # GitHub Actions used in workflows (deploy.yml) — also a supply-chain surface
+  - package-ecosystem: "github-actions"
+    directory: "/"
     schedule:
       interval: "weekly"
